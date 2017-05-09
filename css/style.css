@@ -1,0 +1,246 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : Apr 27, 2017, 11:17:51 AM
+    Author     : Briet
+*/
+
+@import url('https://fonts.googleapis.com/css?family=Baloo|Open+Sans');
+
+
+/*Mobile First*/
+@media screen and (min-width: 320px){
+
+h1,h2,h3 {
+    font-family: 'Baloo', cursive;
+    margin: 0;
+}
+
+p {
+    font-family: 'Open Sans', sans-serif;
+}
+
+h1 {
+    font-size: 300%;
+}
+
+h2 {
+    font-size: 250%;
+}
+
+h3 { 
+font-size: 200%;
+}
+
+p {
+    font-size: 100%;
+}
+
+body {
+    background-color: #ffffff;
+    margin: 0 auto;
+    width: 94%;
+       display: flex;
+        flex-direction: column;
+        min-height: 100%;
+}
+
+/*INLINE LINKS*/
+a:link {
+    color: #000000;
+    font-family: 'Baloo', sans-serif;
+    font-weight: bold;
+    text-decoration: none;
+    padding: 5px 10px;
+}
+
+/*NAVIGATION*/
+nav {
+    width: 100%;
+    background-color: #de2226;
+}
+nav ul {
+   overflow: hidden;
+    margin: 0;
+    padding: 0;
+}
+nav li {
+  list-style-type: none;
+  float: left;
+  font-family: 'Baloo', sans-serif;
+  font-size: 1em;
+}
+
+nav ul li a {
+    display: block;
+    text-decoration: none;
+    padding: 15px;
+}
+ 
+nav a {
+  text-decoration: none;
+  color: #fff;
+  display: block;
+}
+ 
+nav a:hover {
+  background-color: #ffffff;
+  color: #de2226;
+}
+ 
+nav a:active {
+    background-color: #ffffff;
+    color: #de2226;
+}
+
+nav a:visited {
+    background-color: #de2226;
+    color: #000000;
+}
+/*MY ACCOUNT*/
+#tools {
+    display: inline;
+}
+#tools::before {
+    content: url("/images/site/account.gif");
+}
+
+header {
+    color: #ffffff;
+    display: flex;
+    justify-content: space-between;
+    padding-top: 20px;
+}
+
+html {
+    background-image: url("/images/site/background.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100%;
+
+}
+
+main {
+    flex: 1 0 auto;
+}
+
+footer {
+    background-color: #ffffff;
+    color: #000000; 
+    text-align: center;
+}
+
+hr {
+    background-color: #fff;
+	border-top: 4px dashed #de2226;
+}
+
+/*RECIPES*/
+.column{
+    display: -webkit-flex;
+   display: flex;
+   -webkit-flex-direction: column;
+   flex-direction: row;
+   -webkit-align-items: center;
+   align-items: center;
+   -webkit-justify-content: center;
+   justify-content: center;
+}
+
+figure .image {
+    width: 100%;
+}
+
+.recipes {
+    
+   flex: 2 0 0; 
+    display: -webkit-flex;
+   display: flex;
+   -webkit-align-items: center;
+   align-items: center;
+   -webkit-justify-content: center;
+   justify-content: center;
+   -webkit-flex-direction: row;
+   flex-direction: row;
+   -webkit-flex-wrap: wrap;
+   flex-wrap: wrap;
+/*    Or do it all in one line with flex flow 
+   -webkit-flex-flow: row wrap;
+   flex-flow: row wrap;*/
+}
+
+.flexrecipe {
+    width: 125px;
+    height: 80px;
+    margin: 10px;
+    background-color: #808080;
+}
+
+.flexrecipe figure {
+    text-align: center;
+    display: table;
+    max-width: 30%; 
+    margin: 10px auto; 
+}
+
+.reviews {
+   -webkit-flex: 1 0 0;
+   flex: 1 0 0;
+}
+
+/*HERO*/
+.hero {
+    background-image: url("/images/site/rocketfeature.jpg");
+    background-repeat: no-repeat;
+    color: #990033;
+    width:100%;
+  height: 500px;
+   margin: 0 auto;
+   position: relative; 
+
+}
+
+.acmerocket {
+    display: flex;
+    justify-content: flex-end;
+    padding-right: 20px;
+}
+.acmerocket li {
+        list-style: none;
+    text-align: left;
+}
+#actionbtn {
+    margin: 10px 0px 0px 0px;
+}
+
+}
+
+/*  Tablets */
+    @media only screen and (min-width : 768px) {
+.hero {
+    background-image: url("/images/site/rocketfeature.jpg");
+    background-repeat: no-repeat;
+    color: #990033;
+    background-size:  cover;
+}
+    }
+
+     /*Desktops*/ 
+    @media only screen and (min-width : 992px) {
+
+.hero {
+    background-image: url("/images/site/rocketfeature.jpg");
+    background-repeat: no-repeat;
+    color: #990033;
+    background-size:  cover;
+}
+.nav li {
+  list-style-type: none;
+  float: left;
+  font-family: 'Baloo', sans-serif;
+  font-size: 2em;
+}
+    }

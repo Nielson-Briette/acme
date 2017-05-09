@@ -1,0 +1,14 @@
+INSERT INTO `clients` (`clientid`, `clientFirstname`, `clientLastname`, `clientEmail`, `clientPassword`, `clientLevel`, `comments`) VALUES
+(1, 'Tony', 'Stark', 'tony@starknet.com', 'Iam1ronM@n', '1', '\I am the real Ironman\');
+
+UPDATE clients SET clientLevel='3' WHERE clientLevel=1
+
+UPDATE inventory SET invName = replace(invName,'Nylon','Climbing'), invDescription = replace
+(invDescription, 'nylon', 'climbing'), invStyle = replace(invStyle,'Nylon','Climbing') WHERE invId = 15
+
+SELECT*FROM inventory INNER JOIN categories ON inventory.categoryId=categories.categoryId WHERE inventory.categoryiD = 3
+
+SELECT `invName` FROM inventory T1 INNER JOIN categories T2 on T1.categoryId = T2.categoryId WHERE T2.categoryName = 'Misc'
+
+DELETE FROM inventory WHERE invId = 7
+
