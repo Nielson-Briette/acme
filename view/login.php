@@ -18,16 +18,21 @@
             </nav>
             <main>
                 <h1>Acme Login</h1>
-                
-                <!--their email address
-their password-->
-                
-                
-    </main>
-    <footer>
-        <?php
-        include $_SERVER['DOCUMENT_ROOT'] . '/common/footer.php';
-        ?>
-    </footer>
-</body>
+                <body>
+                    <form>
+                        Email address:<br>
+                        <input type="text" name="email">
+                        <br>
+                        Password<br>
+                        <input type="text" name="password">
+                        <input type="submit" value="Submit">
+                    </form>
+                </body>
+            </main>
+            <footer>
+                <?php
+                include $_SERVER['DOCUMENT_ROOT'] . '/common/footer.php';
+                ?>
+            </footer>
+    </body>
 </html>

@@ -18,19 +18,31 @@
             </nav>
             <main>
                 <h1>Acme Registration</h1>
-                
-<!--                First name
-Last name
-Email address
-A password's-->
+                <body>
+                    <p> All fields required </p>
+                    <form>
+                        First name:<br>
+                        <input type="text" name="firstname">
+                        <br>
+                        Last name:<br>
+                        <input type="text" name="lastname">
+                        <br>
+                        Email address:<br>
+                        <input type="text" name="email">
+                        <br>
+                        Password<br>
+                        <input type="text" name="password">
+                        <input type="submit" value="Submit">
+                    </form>
 
-    </main>
-    <footer>
-        <?php
-        include $_SERVER['DOCUMENT_ROOT'] . '/common/footer.php';
-        ?>
-    </footer>
-</body>
+                </body>
+            </main>
+            <footer>
+                <?php
+                include $_SERVER['DOCUMENT_ROOT'] . '/common/footer.php';
+                ?>
+            </footer>
+    </body>
 </html>
 
 
