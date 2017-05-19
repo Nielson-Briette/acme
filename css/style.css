@@ -216,8 +216,8 @@ and open the template in the editor.
         font-size: 1em;
        justify-content: center;
        align-items: center;
-    }
-
+         }
+    
     .field-button {
          margin-top: 6px;
         -webkit-border-radius: 5;
