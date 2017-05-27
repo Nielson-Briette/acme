@@ -8,13 +8,15 @@
         <title>Acme| Products</title>
     </head>
     <body>
-        <header>
+         <header>
             <?php
             include $_SERVER['DOCUMENT_ROOT'] . '/common/header.php';
             ?>
         </header>
         <nav class="nav">
-            <?php echo $navList; ?>
+            <?php
+                include $_SERVER['DOCUMENT_ROOT'] . '/common/navigation.php';
+            ?>
         </nav>
         <main>
             <div class="login">
@@ -22,9 +24,9 @@
                 <p> Welcome to the product management page. Please choose an option below: </p>
                 <ul>
                     <!--//Link to the controller that will trigger the delivery of the add category view.-->
-                    <li><a class="field-button" href='addCategory.php'>Add new Category</a></li>
+                    <li><a href="../products/index.php?action=addCategory" title="add category">Add new Category</a></li>
                     <!--Link to the controller that will trigger the delivery of the add category view.-->
-                    <li><a class="field-button" href='addProduct.php'>Add new Product</a> </li>
+                    <li><a href="../products/index.php?action=addProduct" title="add a new product">Add new Product</a> </li>
                 </ul>
             </div>
         </main>

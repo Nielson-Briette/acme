@@ -13,12 +13,11 @@ function getCategoriesAndIds() {
 }
 
 //Contain a function for inserting a new category to the categories table.
-function newCategory($categoryid, $categoryname){
+function newCategory($categoryname){
      $db = acmeConnect();
-      $sql = 'INSERT INTO categories (categoryId, categoryName)
-           VALUES (:categoryid, :categoryname )';
+      $sql = 'INSERT INTO categories (categoryName)
+           VALUES (:categoryname )';
    $stmt = $db->prepare($sql);
-   $stmt->bindValue(':categoryid', $categoryid, PDO::PARAM_STR);
    $stmt->bindValue(':categoryname', $categoryname, PDO::PARAM_STR);
    $stmt->execute();
    $rowsChanged = $stmt->rowCount();
@@ -27,13 +26,12 @@ function newCategory($categoryid, $categoryname){
 }
 
 //Contain a function for inserting a new product to the inventory table.
-function newProduct($invId, $invDescription, $invImage, $invThumbnail, $invPrice, $invStock, $invSize, $invWeight, $invLocation, $categoryId, $invVendor, $invStyle){
+function newProduct($invName, $invDescription, $invImage, $invThumbnail, $invPrice, $invStock, $invSize, $invWeight, $invLocation, $categoryId, $invVendor, $invStyle){
      $db = acmeConnect();
-      $sql = 'INSERT INTO inventory (invId, invName, invDescription, invImage, invThumbnail, invPrice, invStock, invSize, invWeight, invLocation, categoryId, invVendor, invStyle)
-           VALUES (:invId, :invName, :invDescription, :invImage, :invThumbnail, :invPrice, :invStock, :invSize, :invWeight, :invLocation, :categoryId, :invVendor, :invStyle)';
+      $sql = 'INSERT INTO inventory (invName, invDescription, invImage, invThumbnail, invPrice, invStock, invSize, invWeight, invLocation, categoryId, invVendor, invStyle)
+           VALUES (:invName, :invDescription, :invImage, :invThumbnail, :invPrice, :invStock, :invSize, :invWeight, :invLocation, :categoryId, :invVendor, :invStyle)';
    $stmt = $db->prepare($sql);
-   $stmt->bindValue(':invId', $invId, PDO::PARAM_STR);
-   $stmt->bindValue(':invName', $invId, PDO::PARAM_STR);
+   $stmt->bindValue(':invName', $invName, PDO::PARAM_STR);
    $stmt->bindValue(':invDescription', $invDescription, PDO::PARAM_STR);
    $stmt->bindValue(':invImage', $invImage, PDO::PARAM_STR);
    $stmt->bindValue(':invThumbnail', $invThumbnail, PDO::PARAM_STR);

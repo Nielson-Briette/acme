@@ -17,22 +17,16 @@
         </nav>
         <main>
             <div class="login">
-                   <!--php code if message is set-->
-                  <?php
+                <?php
                 if (isset($message)) {
                     echo $message;
                 }
                 ?>
-                <form action="../products/index.php?action=addNewCategory" method="post">
-                    <h1>Add New Category</h1>
-                    <div class="field">
-                        <label for="categoryname">Name</label>
-                        <input type="text" id="categoryid" name="categoryname" required>
-                    </div>
-                    <div>
-                        <button class="field-button">Submit</button>
-                         <!--<input type="hidden" name="action" value="register">-->
-                    </div>
+                <h1>Add Category</h1>
+                <form action="/products/index.php?action=addNewCategory" method="post">
+                    <input type="text" name="categoryName" />
+                    <br>
+                    <button type='submit' >Add Category</button>
                 </form>
             </div>
         </main>
