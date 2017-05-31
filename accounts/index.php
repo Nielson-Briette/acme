@@ -7,6 +7,8 @@ require_once '../library/connections.php';
 require_once '../model/acme-model.php';
 // Get the accounts model
 require_once '../model/accounts-model.php';
+//Get the functions php
+require_once '../library/functions.php';
 
 // Get the array of categories
 $categories = getCategories();
@@ -32,21 +34,31 @@ if ($action == NULL) {
 
 //enhancement 3
 switch ($action) {
-
-    case 'register':
+    
+    case 'home':
+        include '../view/home.php';
+        break;
+    
+    case 'registration':
+        include '../view/registration.php';
+        break;
+    
+    case 'Register':
         // Filter and store the data
-        $firstname = filter_input(INPUT_POST, 'firstname');
-        $lastname = filter_input(INPUT_POST, 'lastname');
+        $firstname = filter_input(INPUT_POST, 'firstname', FILTER_SANITIZE_STRING);
+        $lastname = filter_input(INPUT_POST, 'lastname', FILTER_SANITIZE_STRING);
         $email = filter_input(INPUT_POST, 'email');
-        $password = filter_input(INPUT_POST, 'password');
-
+        $password = filter_input(INPUT_POST, 'password', FILTER_SANITIZE_STRING);
+        $email = checkEmail($email);
+        $checkPassword = checkPassword($password);
         // Check for missing data
-        if (empty($firstname) || empty($lastname) || empty($email) || empty($password)) {
+        if (empty($firstname) || empty($lastname) || empty($email) || empty($checkPassword)) {
             $message = '<p>Please provide information for all empty form fields.</p>';
             include '../view/registration.php';
             exit;
         }
-
+        //Hash the checked password
+        $password = password_hash($password, PASSWORD_DEFAULT);
         // Send the data to the model
         $regOutcome = regVisitor($firstname, $lastname, $email, $password);
 
@@ -61,5 +73,19 @@ switch ($action) {
             exit;
         }
         break;
+        
+        case 'login':
+        include '../view/login.php';
+        break;
+    
+    case 'Login':
+        $firstname = filter_input(INPUT_POST, 'firstname', FILTER_SANITIZE_STRING);
+        $lastname = filter_input(INPUT_POST, 'lastname', FILTER_SANITIZE_STRING);
+        $email = filter_input(INPUT_POST, 'email');
+        $password = filter_input(INPUT_POST, 'password', FILTER_SANITIZE_STRING);
+        $email = checkEmail($email);
+        $checkPassword = checkPassword($password);
+        break;
+        
 }
 

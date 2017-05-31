@@ -30,31 +30,32 @@
                         <p> All fields required </p>
                         <label>
                             First name:<br>
-                            <input type="text" name="firstname" id="firstname">
+                            <input type="text" name="firstname" id="firstname" <?php if(isset($firstname)){echo "value='$firstname'";} ?> required>
                             <br>
                         </label>
 
                         <label>
                             Last name:<br>
-                            <input type="text" name="lastname" id="lastname">
+                            <input type="text" name="lastname" id="lastname" <?php if(isset($lastname)){echo "value='$lastname'";} ?> required>
                             <br>
                         </label>
 
                         <label>
                             Email address:<br>
-                            <input type="email" name="email" id="email">
+                            <input type="email" name="email" id="email" <?php if(isset($email)){echo "value='$email'";} ?> required>
                             <br>
                         </label>
 
                         <label>
                             Password:<br>
-                            <input type="password" name="password" id="password">
+                            <span><i>Passwords must be at least 8 characters and contain at least 1 number, 1 capital letter and 1 special character</i></span>
+                            <input type="password" name="password" id="password" required pattern="(?=^.{8,}$)(?=.*\d)(?=.*\W+)(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$">
                         </label>
                         <label>
                             <br>
                             <input type="submit" name="submit" class="field-button" value="Register">
                             <!--                            <!-- Add the action name - value pair -- >-->
-                            <input type="hidden" name="action" value="register">
+                            <input type="hidden" name="action" value="Register">
                         </label>
                     </form>
             </div>
