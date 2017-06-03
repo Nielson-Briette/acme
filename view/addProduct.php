@@ -2,14 +2,14 @@
 $catList = "<select name='categoryId' id=categoryId>";
 $catList .= '<option value ="">Please Choose</option>';
 foreach ($categoriesAndIds as $catAndId) {
-    $catList .= "<option value='$catAndId[categoryId]'";
-    if(isset($categoryId)){
-    
-    if($catAndId['categoryId'] === $catAndId){
-      $catList .= ' selected ';
-  }
+   $catList .= "<option value='$catAndId[categoryId]'";
+   if(isset($categoryId)){
+   
+   if($catAndId['categoryId'] === $categoryId){
+     $catList .= ' selected ';
+ }
 }   
-    $catList .= ">$catAndId[categoryName]</option>";
+   $catList .= ">$catAndId[categoryName]</option>";
 }
 $catList .= "</select>";
 ?>
