@@ -7,26 +7,14 @@ require_once '../library/connections.php';
 require_once '../model/acme-model.php';
 // Get the acme model
 require_once '../model/products-model.php';
+//Get the functions php
+require_once '../library/functions.php';
 
 // Get the array of categories
 $categoriesAndIds = getCategoriesAndIds();
 
-
-//create $navList vairable to build dynamic menu from an array of categories
-//obtained by calling the function in the acme model
-$navList = '<ul>';
-$navList .= "<li><a href='../index.php' title='View the Acme home page'>Home</a></li>";
-foreach ($categoriesAndIds as $categoryAndId) {
-    $navList .= "<li><a href='../index.php?action=$categoryAndId[categoryName]' title='View our $categoryAndId[categoryName] product line'>$categoryAndId[categoryName]</a></li>";
-}
-$navList .= '</ul>';
-
-//Create a $catList variable to build a dynamic drop-down select list
-$catList = "<select name='categoryId'>";
-foreach ($categoriesAndIds as $catAndId) {
-    $catList .= "<option value='$catAndId[categoryId]'>$catAndId[categoryName]</option>";
-}
-$catList .= "</select>";
+//call the buildNav function
+$navList = buildNav();
 
 $action = filter_input(INPUT_POST, 'action');
 if ($action == NULL){
@@ -52,7 +40,7 @@ switch ($action) {
         break;
 
     case 'addNewCategory':
-        $categoryname = filter_input(INPUT_POST, 'categoryName');
+        $categoryname = filter_input(INPUT_POST, 'categoryName', FILTER_SANITIZE_STRING);
         if (empty($categoryname)) {
             $message = '<p>Please provide information for all empty form fields.</p>';
             include '../view/addCategory.php';
@@ -69,18 +57,18 @@ switch ($action) {
         exit;
 
     case 'addNewProduct':
-        $invName = filter_input(INPUT_POST, 'invName');
-        $invDescription = filter_input(INPUT_POST, 'invDescription');
-        $invImage = filter_input(INPUT_POST, 'invImage');
-        $invThumbnail = filter_input(INPUT_POST, 'invThumbnail');
-        $invPrice = filter_input(INPUT_POST, 'invPrice');
-        $invStock = filter_input(INPUT_POST, 'invStock');
-        $invSize = filter_input(INPUT_POST, 'invSize');
-        $invWeight = filter_input(INPUT_POST, 'invWeight');
-        $invLocation = filter_input(INPUT_POST, 'invLocation');
-        $categoryId = filter_input(INPUT_POST, 'categoryId');
-        $invVendor = filter_input(INPUT_POST, 'invVendor');
-        $invStyle = filter_input(INPUT_POST, 'invStyle');
+        $invName = filter_input(INPUT_POST, 'invName' , FILTER_SANITIZE_STRING);
+        $invDescription = filter_input(INPUT_POST, 'invDescription' , FILTER_SANITIZE_STRING);
+        $invImage = filter_input(INPUT_POST, 'invImage' , FILTER_SANITIZE_STRING);
+        $invThumbnail = filter_input(INPUT_POST, 'invThumbnail' , FILTER_SANITIZE_STRING);
+        $invPrice = filter_input(INPUT_POST, 'invPrice' , FILTER_SANITIZE_STRING);
+        $invStock = filter_input(INPUT_POST, 'invStock' , FILTER_SANITIZE_STRING);
+        $invSize = filter_input(INPUT_POST, 'invSize' , FILTER_SANITIZE_STRING);
+        $invWeight = filter_input(INPUT_POST, 'invWeight' , FILTER_SANITIZE_STRING);
+        $invLocation = filter_input(INPUT_POST, 'invLocation' , FILTER_SANITIZE_STRING);
+        $categoryId = filter_input(INPUT_POST, 'categoryId' , FILTER_SANITIZE_STRING);
+        $invVendor = filter_input(INPUT_POST, 'invVendor' , FILTER_SANITIZE_STRING);
+        $invStyle = filter_input(INPUT_POST, 'invStyle' , FILTER_SANITIZE_STRING);
 
         if (empty($invName) || empty($invDescription) || empty($invImage) || empty($invThumbnail) || empty($invPrice) || empty($invStock) || empty($invSize) || empty($invWeight) || empty($invLocation) || empty($categoryId) || empty($invVendor) || empty($invStyle)) {
             $message = '<p>Please provide information for all empty form fields.</p>';

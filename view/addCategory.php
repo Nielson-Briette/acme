@@ -13,7 +13,7 @@
             ?>
         </header>
         <nav class="nav">
-            <?php echo $navList; ?>
+            <?php echo buildNav(); ?>
         </nav>
         <main>
             <div class="login">
@@ -24,7 +24,7 @@
                 ?>
                 <h1>Add Category</h1>
                 <form action="/products/index.php?action=addNewCategory" method="post">
-                    <input type="text" name="categoryName" />
+                    <input type="text" name="categoryname" <?php if(isset($categoryname)){echo "value='$categoryname'";} ?> required />
                     <br>
                     <button type='submit' >Add Category</button>
                 </form>

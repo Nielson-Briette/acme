@@ -13,7 +13,7 @@
             ?>
         </header>
         <nav class="nav">
-            <?php echo $navList; ?>
+            <?php echo buildNav(); ?>
         </nav>
         <main>
             <div class="login">

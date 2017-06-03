@@ -14,9 +14,7 @@
             ?>
         </header>
         <nav class="nav">
-            <?php
-                include $_SERVER['DOCUMENT_ROOT'] . '/common/navigation.php';
-            ?>
+            <?php echo buildNav(); ?>
         </nav>
         <main>
             <div class="login">

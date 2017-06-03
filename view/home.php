@@ -19,7 +19,7 @@ and open the template in the editor.
         </header>
 
         <nav class="nav">
-            <?php echo $navList; ?>
+            <?php echo buildNav(); ?>
             <!--      include $_SERVER['DOCUMENT_ROOT'] . '/common/navigation.php';-->
         </nav>
 
