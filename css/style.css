@@ -112,9 +112,12 @@ and open the template in the editor.
     #tools::before {
         content: url("/images/site/account.gif");
     }
-
+    
+    header span{
+        margin-right: .5em;
+        font-size: smaller; 
+    }
     header {
-        color: #ffffff;
         display: flex;
         justify-content: space-between;
         padding-top: 20px;

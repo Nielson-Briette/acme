@@ -1,5 +1,5 @@
-<?php
 //<!--ACCOUNTS MODEL - SITE VISITORS-->
+<?php
 
 //<!--new function to handle site's registrations-->
 function regVisitor($firstname, $lastname, $email, $password){
@@ -26,4 +26,16 @@ function regVisitor($firstname, $lastname, $email, $password){
    $stmt->closeCursor();
 // Return the indication of success (rows changed)
    return $rowsChanged;
+}
+
+// Get client data based on an email address
+function getClient($email){
+  $db = acmeConnect();
+  $sql = 'SELECT clientId, clientFirstname, clientLastname, clientEmail, clientLevel, clientPassword FROM clients WHERE clientEmail = :email';
+  $stmt = $db->prepare($sql);
+  $stmt->bindValue(':email', $email, PDO::PARAM_STR);
+  $stmt->execute();
+  $clientData = $stmt->fetch(PDO::FETCH_ASSOC);
+  $stmt->closeCursor();
+  return $clientData;
 }

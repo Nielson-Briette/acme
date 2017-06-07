@@ -23,7 +23,6 @@
                     echo $message;
                 }
                 ?>
-                <!--end php-->
                 <form action="../accounts/index.php?action=login" method="post">
                     <h1>Acme Login</h1>
                     <div class="field">

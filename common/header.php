@@ -1,7 +1,19 @@
-    <img src="/images/site/logo.gif" alt="logo for my site">   
-    <div id="tools">   <!--deliver the login view view/login.php--> 
-        <a href='../accounts/index.php?action=login' title="Login or Register">My Account</a>
-    </div>
+<img src="/images/site/logo.gif" alt="logo for my site">   
+<div id="tools">   
+    <?php
+    if (isset($cookieFirstname)) {
+        echo "<span>Welcome $cookieFirstname</span>";
+    }
+    ?>
+    <img src="/images/site/account.gif" alt="logo for my site">
+    <?php
+    if (isset($_SESSION['loggedin'])) {
+        echo '<div id="logout"><a href="/accounts/index.php?action=Logout">Logout</a></div>';
+    } else {
+        echo '<a href="/accounts/index.php?action=login" title="Login or Register">My Account</a>';
+    }
+    ?>
+</div>
       
 
 
