@@ -1,9 +1,11 @@
+   <?php
+    if (isset($_SESSION['loggedin'])) {
+        echo '<a href="/accounts/index.php?action=Logout">Logout</a></div>';
+    } else {
+        echo '<a href="/accounts/index.php?action=login" title="Login or Register" style="float: right; padding-top:40px;">My Account</a>';
+    }
+    ?>
 <!DOCTYPE html>
-<!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
--->
 <html>
     <head>
         <meta charset="UTF-8">

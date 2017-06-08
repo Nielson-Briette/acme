@@ -1,4 +1,4 @@
-//<!--// ACCOUNTS CONTROLLER-->
+<!--// ACCOUNTS CONTROLLER-->
 <?php
 // Create or access a Session
 session_start();
@@ -68,21 +68,21 @@ switch ($action) {
         break;
 
     case 'Login':
-        $firstname = filter_input(INPUT_POST, 'firstname', FILTER_SANITIZE_STRING);
-        $lastname = filter_input(INPUT_POST, 'lastname', FILTER_SANITIZE_STRING);
-        $email = filter_input(INPUT_POST, 'email');
-        $password = filter_input(INPUT_POST, 'password', FILTER_SANITIZE_STRING);
-        $email = checkEmail($email);
-        $checkPassword = checkPassword($password);
-        break;
+//        $firstname = filter_input(INPUT_POST, 'firstname', FILTER_SANITIZE_STRING);
+//        $lastname = filter_input(INPUT_POST, 'lastname', FILTER_SANITIZE_STRING);
+//        $email = filter_input(INPUT_POST, 'email');
+//        $password = filter_input(INPUT_POST, 'password', FILTER_SANITIZE_STRING);
+//        $email = checkEmail($email);
+//        $checkPassword = checkPassword($password);
+//        break;
 
-        $email = filter_input(INPUT_POST, 'email');
-        $email = checkEmail($email);
+        $email = filter_input(INPUT_POST, 'username');
+        $checkEmail = checkEmail($email);
         $password = filter_input(INPUT_POST, 'password', FILTER_SANITIZE_STRING);
         $passwordCheck = checkPassword($password);
 
         // Run basic checks, return if errors
-        if (empty($email) || empty($passwordCheck)) {
+        if (empty($email) || empty($password)) {
             $message = '<p class="notice">Please provide a valid email address and password.</p>';
             include '../view/login.php';
             exit;
@@ -116,6 +116,6 @@ switch ($action) {
 
     case 'Logout':
         session_destroy();
-        include '../index.php';
+        header('location:/index.php');
         exit;  
         }

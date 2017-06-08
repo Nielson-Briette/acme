@@ -1,4 +1,4 @@
-//<!--ACCOUNTS MODEL - SITE VISITORS-->
+<!--ACCOUNTS MODEL - SITE VISITORS-->
 <?php
 
 //<!--new function to handle site's registrations-->

@@ -1,10 +1,10 @@
-<?php
-if (isset($_SESSION['loggedin'])) {
-echo '<div id="logout"><a href="/accounts/index.php?action=Logout">Logout</a></div>';
-} else {
-header('location:/acme/index.php');
-}
-?>
+   <?php
+    if (isset($_SESSION['loggedin'])) {
+        echo '<a href="/accounts/index.php?action=Logout">Logout</a></div>';
+    } else {
+        echo '<a href="/accounts/index.php?action=login" title="Login or Register">My Account</a>';
+    }
+    ?>
 <!DOCTYPE html>
 <html>
     <head>
@@ -24,10 +24,10 @@ header('location:/acme/index.php');
         </nav>
         <main>
             <?php
-                $firstname = $_SESSION['clientInfo']['clientFirstname'];
-                $lastname = $_SESSION['clientInfo']['clientLastname'];
-                $emailaddress = $_SESSION['clientInfo']['clientEmail'];
-                $level = $_SESSION['clientInfo']['clientLevel'];
+                $firstname = $_SESSION['clientData']['clientFirstname'];
+                $lastname = $_SESSION['clientData']['clientLastname'];
+                $emailaddress = $_SESSION['clientData']['clientEmail'];
+                $level = $_SESSION['clientData']['clientLevel'];
 
                 echo "<h1>$firstname $lastname</h1>
                 <ul>

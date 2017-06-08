@@ -52,6 +52,7 @@ and open the template in the editor.
         width: 85%;
         min-height: 100%;
     }
+    
 
     /*INLINE LINKS*/
     a:link {
@@ -117,6 +118,7 @@ and open the template in the editor.
         margin-right: .5em;
         font-size: smaller; 
     }
+    
     header {
         display: flex;
         justify-content: space-between;
