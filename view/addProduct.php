@@ -1,5 +1,5 @@
 <?php
-$catList = "<select name='categoryId' id=categoryId>";
+$catList = "<select name='categoryId' id='categoryId'>";
 $catList .= '<option value ="">Please Choose</option>';
 foreach ($categoriesAndIds as $catAndId) {
    $catList .= "<option value='$catAndId[categoryId]'";
@@ -13,13 +13,9 @@ foreach ($categoriesAndIds as $catAndId) {
 }
 $catList .= "</select>";
 ?>
-   <?php
-    if (isset($_SESSION['loggedin'])) {
-        echo '<a href="/accounts/index.php?action=Logout">Logout</a></div>';
-    } else {
-        echo '<a href="/accounts/index.php?action=login" title="Login or Register">My Account</a>';
-    }
-    ?>
+<?php if ($_SESSION['clientData']['clientLevel']>1); 
+   header('location:../index.php');
+   ?>
 <!DOCTYPE html>
 <html>
     <head>

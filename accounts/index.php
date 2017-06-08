@@ -39,6 +39,16 @@ switch ($action) {
         $password = filter_input(INPUT_POST, 'password', FILTER_SANITIZE_STRING);
         $email = checkEmail($email);
         $checkPassword = checkPassword($password);
+        
+          //checking for existing email
+  $existingEmail = checkExistingEmail($email);
+  //check for exisint email address in the table 
+  if ($existingEmail){
+      $message = '<p class="notice"> That email address already exists. Do you want to login instead?</p>';
+      include '../view/login.php';
+      exit;
+  }
+        
         // Check for missing data
         if (empty($firstname) || empty($lastname) || empty($email) || empty($checkPassword)) {
             $message = '<p>Please provide information for all empty form fields.</p>';

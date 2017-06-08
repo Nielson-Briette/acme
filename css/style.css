@@ -53,6 +53,10 @@ and open the template in the editor.
         min-height: 100%;
     }
     
+    #logout {
+        float: right;
+        padding-top: 20px;
+    }
 
     /*INLINE LINKS*/
     a:link {

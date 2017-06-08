@@ -1,11 +1,4 @@
-   <?php
-    if (isset($_SESSION['loggedin'])) {
-        echo '<a href="/accounts/index.php?action=Logout">Logout</a></div>';
-    } else {
-        echo '<a href="/accounts/index.php?action=login" title="Login or Register">My Account</a>';
-    }
-    ?>
-<!DOCTYPE html>
+<!DOCTYPE HTML>
 <html>
     <head>
         <meta charset="UTF-8">

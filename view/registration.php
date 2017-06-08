@@ -1,10 +1,3 @@
-   <?php
-    if (isset($_SESSION['loggedin'])) {
-        echo '<a href="/accounts/index.php?action=Logout">Logout</a></div>';
-    } else {
-        echo '<a href="/accounts/index.php?action=login" title="Login or Register">My Account</a>';
-    }
-    ?>
 <!DOCTYPE html>
 <html>
     <head>
@@ -25,13 +18,11 @@
         </nav>
         <main>
             <div class="login">
-                <!--php code if message is set-->
                 <?php
                 if (isset($message)) {
                     echo $message;
                 }
                 ?>
-                <!--end php-->
                 <form method="post" action="/accounts/index.php">
                         <h1>Acme Registration</h1>
                         <p> All fields required </p>

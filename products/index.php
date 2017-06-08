@@ -12,7 +12,7 @@ require_once '../library/functions.php';
 $categoriesAndIds = getCategoriesAndIds();
 
 //call the buildNav function
-$navList = buildNav();
+buildNav();
 
 $action = filter_input(INPUT_POST, 'action');
 if ($action == NULL){

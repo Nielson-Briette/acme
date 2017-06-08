@@ -28,6 +28,26 @@ function regVisitor($firstname, $lastname, $email, $password){
    return $rowsChanged;
 }
 
+ function checkExistingEmail($email){
+ $db = acmeConnect();
+ //the SQL statement
+ $sql = 'SELECT clientEmail FROM clients WHERE clientEmail = :email';
+ //Create the prepared statment using the acme connection
+ $stmt = $db->prepare($sql);
+ //place actual variables and tell the databse they type of data
+ $stmt->bindValue(':email', $email, PDO::PARAM_STR);
+ $stmt->execute ();
+ //tells the system to look for the existing email
+ $matchEmail = $stmt->fetch(PDO::FETCH_NUM);
+ //close the datebase interaction
+ $stmt->closeCursor();
+ if (empty($matchEmail)){
+     return 0;
+ } else {
+     return 1;
+ }
+ }
+
 // Get client data based on an email address
 function getClient($email){
   $db = acmeConnect();
@@ -39,3 +59,5 @@ function getClient($email){
   $stmt->closeCursor();
   return $clientData;
 }
+
+ 

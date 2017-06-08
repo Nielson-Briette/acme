@@ -1,11 +1,6 @@
-   <?php
-    if (isset($_SESSION['loggedin'])) {
-            echo '<a href="/accounts/index.php?action=Logout">Logout</a></div>';
-    } else {
-        echo '<a href="/accounts/index.php?action=login" title="Login or Register">My Account</a>';
-    }
-    ?>
-<!DOCTYPE html>
+ <?php if ($_SESSION['clientData']['clientLevel']>1); 
+   header('location:../index.php');
+   ?><!DOCTYPE html>
 <!--// PRODUCT MANAGEMENT VIEW-->
 <html>
     <head>

@@ -1,10 +1,3 @@
-   <?php
-    if (isset($_SESSION['loggedin'])) {
-        echo '<a href="/accounts/index.php?action=Logout">Logout</a></div>';
-    } else {
-        echo '<a href="/accounts/index.php?action=login" title="Login or Register">My Account</a>';
-    }
-    ?>
 <!DOCTYPE html>
 <html>
     <head>
@@ -36,7 +29,7 @@
                         <input type="email" id="name" name="username" <?php if(isset($email)){echo "value='$email'";} ?> required>
                     </div>
                     <div class="field">
-                        <label for="pwd">Password:</label>
+                        <label for="password">Password:</label>
                         <span><i>Passwords must be at least 8 characters and contain at least 1 number, 1 capital letter and 1 special character</i></span>
                         <input type="password" name="password" id="password" required pattern="(?=^.{8,}$)(?=.*\d)(?=.*\W+)(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$">
                     </div>
