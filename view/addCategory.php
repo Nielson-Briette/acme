@@ -1,6 +1,9 @@
-   <?php if ($_SESSION['clientData']['clientLevel']>1); 
-   header('location:../index.php');
-   ?><!DOCTYPE html>
+<?php
+if ($_SESSION['clientData']['clientLevel'] < 2) {
+ header('location: /index.php');
+ exit;
+}
+?><!DOCTYPE html>
 <html>
     <head>
         <meta charset="UTF-8">
