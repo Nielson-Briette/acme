@@ -39,16 +39,16 @@ switch ($action) {
         $password = filter_input(INPUT_POST, 'password', FILTER_SANITIZE_STRING);
         $email = checkEmail($email);
         $checkPassword = checkPassword($password);
-        
-          //checking for existing email
-  $existingEmail = checkExistingEmail($email);
-  //check for exisint email address in the table 
-  if ($existingEmail){
-      $message = '<p class="notice"> That email address already exists. Do you want to login instead?</p>';
-      include '../view/login.php';
-      exit;
-  }
-        
+
+        //checking for existing email
+        $existingEmail = checkExistingEmail($email);
+        //check for exisint email address in the table 
+        if ($existingEmail) {
+            $message = '<p class="notice"> That email address already exists. Do you want to login instead?</p>';
+            include '../view/login.php';
+            exit;
+        }
+
         // Check for missing data
         if (empty($firstname) || empty($lastname) || empty($email) || empty($checkPassword)) {
             $message = '<p>Please provide information for all empty form fields.</p>';
@@ -127,5 +127,60 @@ switch ($action) {
     case 'Logout':
         session_destroy();
         header('location:/index.php');
-        exit;  
+        exit;
+
+    case 'client-update':
+        include '../view/client-update.php';
+        break;
+ 
+
+    case 'updateAccount':
+        $updateId = filter_input(INPUT_POST, 'updateId', FILTER_SANITIZE_NUMBER_INT);
+        $upfirstName = filter_input(INPUT_POST, 'upfirstName', FILTER_SANITIZE_STRING);
+        $uplastName = filter_input(INPUT_POST, 'uplastName', FILTER_SANITIZE_STRING);
+        $upEmail = filter_input(INPUT_POST, 'upEmail', FILTER_SANITIZE_EMAIL);
+        if (empty($updateId) || empty($upfirstName) || empty($uplastName) || empty($upEmail)) {
+            $message = '<p>Please complete all the information</p>';
         }
+        $updata = updateAccount($updateId, $upfirstName, $uplastName, $upEmail);
+
+        if ($updata) {
+            $message = "<p>Congratulations, $upfirstName was sucessfully updated.</p>";
+            $_SESSION['message'] = $message;
+            include '../view/admin.php';
+            
+            exit;
+        } else {
+            $message = "<p>Error. $upfirstName was not updated.</p>";
+            $_SESSION['message'] = $message;
+             include '../view/admin.php';
+            exit;
+        }
+        break;
+
+    case 'updatePassword':
+        $updateId = filter_input(INPUT_POST, 'updateId', FILTER_SANITIZE_NUMBER_INT);
+        $updatePass = filter_input(INPUT_POST, 'updatePass', FILTER_SANITIZE_STRING);
+        if (empty($updateId) || empty($updatePass)) {
+            $message = '<p>Please complete all the information</p>';
+        }
+        
+        $updatePass = password_hash($updatePass, PASSWORD_DEFAULT);
+        $updata = updatePassword($updateId, $updatePass);
+        
+        if ($updata) {
+            $message = "<p>Congratulations your password was sucessfully updated.</p>";
+            $_SESSION['message'] = $message;
+            include '../view/admin.php';
+            exit;
+        } else {
+            $message = "<p>Error. Your password was not updated.</p>";
+            $_SESSION['message'] = $message;
+            include '../view/admin.php';
+            exit;
+        }
+
+        
+
+        break;
+}

@@ -6,7 +6,9 @@ session_start();
 require_once 'library/connections.php';
 require_once 'model/acme-model.php';
 require_once 'model/products-model.php';
+require_once 'model/accounts-model.php';
 require_once 'library/functions.php';
+
 
 // Get the array of categories
 $categories = getCategories();

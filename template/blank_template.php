@@ -17,7 +17,6 @@ and open the template in the editor.
             include $_SERVER['DOCUMENT_ROOT'] . '/common/header.php';
             ?>
         </header>
-        <div>
             <nav class="nav">
                 <?php echo $navList; ?>
             </nav>
