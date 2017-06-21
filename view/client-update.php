@@ -1,17 +1,16 @@
 <?php
-if ($_SESSION['clientData']['clientLevel'] < 2) {
-    header('location:/index.php');
-    exit;
-}
-$clientData=$_SESSION['clientData'];
-?>
+ if (session_id()== ''){
+header('location:/acme/index.php');
+    }
+    $clientData=$_SESSION['clientData'];
+    ?>
 <!DOCTYPE HTML>
 <html>
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link href="../css/style.css" type="text/css" rel="stylesheet" media="screen">
-        <title>Acme| Home</title>
+        <title>Acme| Client Update</title>
     </head>
     <body>
         <header>
@@ -32,7 +31,7 @@ $clientData=$_SESSION['clientData'];
               <h1>Update Account</h1><br>
                         <p>Please use the field below to make any changes to your account info.</p>
             <div id="form">
-                <form action="/accounts/index.php?action=updateAccount" method="post">
+                <form action="/acme/accounts/index.php?action=updateAccount" method="post">
                     <fieldset>
                         <label>First Name</label><br>
                         <input type="text" name="upfirstName" id="upfirstName" required
@@ -56,26 +55,26 @@ $clientData=$_SESSION['clientData'];
             </div>
 
             <div id="form2">
-                <form action="/accounts/index.php?action=updatePassword" method="post">
+                <form action="/acme/accounts/index.php?action=updatePassword" method="post">
                     <fieldset>
                         <h1>Change Password</h1><br>
                         <p> Use the form field to update your password. </p> <br>
                           <label>
                             Password:<br>
                             <span><i>Passwords must be at least 8 characters and contain at least 1 number, 1 capital letter and 1 special character</i></span>
-                            <input type="password" name="updatePass" id="updatePass" required pattern="(?=^.{8,}$)(?=.*\d)(?=.*\W+)(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$">
+                            <input type="password" name="updatePass" id="updatePass" required pattern="(?=^.{8,}$)(?=.*\d)(?=.*\W+)(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$"
+                                   <?php if (isset($updatePass)){echo "value='$updatePass'";}
+                    elseif(isset($clientData['clientPassword'])) {echo "value='$clientData[clientPassword]'"; }?>>
                         </label>
-                        <label>
                         <input type="submit" name="submit" value="Update Password">
-                        <input type="hidden" name="action" value="updatePassword">
-                        </label>
+                         <input type="hidden" name="updateId" value="<?php if(isset($clientData['clientId'])){ echo $clientData['clientId'];} elseif(isset($clientId)){ echo $clientId; } ?>"><br>
                     </fieldset>
                 </form>                
             </div>
         </main>
         <footer>
 <?php
-include $_SERVER['DOCUMENT_ROOT'] . '/common/footer.php';
+include $_SERVER['DOCUMENT_ROOT'] . '/acme/common/footer.php';
 ?>
         </footer>
     </body>

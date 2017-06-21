@@ -3,13 +3,13 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link href="/css/style.css" type="text/css" rel="stylesheet" media="screen">
+        <link href="../css/style.css" type="text/css" rel="stylesheet" media="screen">
         <title>Acme| Home</title>
     </head>
     <body>
         <header>
             <?php
-            include $_SERVER['DOCUMENT_ROOT'] . '/common/header.php';
+            include $_SERVER['DOCUMENT_ROOT'] . '/acme/common/header.php';
             ?>
         </header>
 
@@ -27,7 +27,7 @@
                         <li>Quick lighting fuse</li>
                         <li>NHTSA approved seat belts</li>
                         <li>Mobile launch stand included</li>
-                        <li><a href="/images/cart/"><img id="actionbtn" alt="Add to cart button" src="/images/site/iwantit.gif"></a></li>
+                        <li><a href="/acme/images/cart/"><img id="actionbtn" alt="Add to cart button" src="/acme/images/site/iwantit.gif"></a></li>
                     </ul>
                 </div>
             </div>
@@ -37,25 +37,25 @@
                         <h3>Featured Recipes</h3>   
                         <br>
                         <figure>
-                            <img src='/images/recipes/bbqsand.jpg' alt='bbqsand'/>
+                            <img src='/acme/images/recipes/bbqsand.jpg' alt='bbqsand'/>
                             <figcaption>Pulled Road Runner BBQ</figcaption>
                         </figure>
                     </div> 
                     <div class="flexrecipe"> 
                         <figure>
-                            <img src='/images/recipes/potpie.jpg' alt='potpie'/>
+                            <img src='/acme/images/recipes/potpie.jpg' alt='potpie'/>
                             <figcaption>Roadrunner Pot Pie</figcaption>
                         </figure>
                     </div>
                     <div class="flexrecipe">
                         <figure>
-                            <img src='/images/recipes/soup.jpg' alt='soup'/>
+                            <img src='/acme/images/recipes/soup.jpg' alt='soup'/>
                             <figcaption>Roadrunner Soup</figcaption>
                         </figure>
                     </div>
                     <div class="flexrecipe">
                         <figure>
-                            <img src='/images/recipes/taco.jpg' alt='tacos'/>
+                            <img src='/acme/images/recipes/taco.jpg' alt='tacos'/>
                             <figcaption>Roadrunner Tacos</figcaption>
                         </figure>
 
@@ -76,7 +76,7 @@
 
         <footer>
             <?php
-            include $_SERVER['DOCUMENT_ROOT'] . '/common/footer.php';
+            include $_SERVER['DOCUMENT_ROOT'] . '/acme/common/footer.php';
             ?>
         </footer>
     </body>

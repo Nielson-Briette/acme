@@ -1,6 +1,6 @@
 <?php
 if ($_SESSION['clientData']['clientLevel'] < 2) {
- header('location: /index.php');
+ header('location: /acme/index.php');
  exit;
 }
 ?>
@@ -49,7 +49,7 @@ $catList .= "</select>";
                 echo $message;
                 }
                 ?>
-                <form action="/products/index.php?action=updateProd" method="post">
+                <form action="/acme/products/index.php?action=updateProd" method="post">
                     <fieldset>
                         <label>Category</label><br>
                         <?php echo $catList; ?> <br>
@@ -66,7 +66,7 @@ $catList .= "</select>";
                         </textarea>
                         
                         <label>Image</label><br>
-                        <input type="text" name="prodImage" id="prodImage" value="/images/no-image.png" required 
+                        <input type="text" name="prodImage" id="prodImage" value="/acme/images/no-image.png" required 
                             <?php if(isset($prodImage)){echo "value='$prodImage'";} 
                         elseif(isset($prodInfo['invImage'])) {echo "value='$prodInfo[invImage]'"; }?>><br>
                         
@@ -123,7 +123,7 @@ $catList .= "</select>";
 
         <footer>
             <?php
-            include $_SERVER['DOCUMENT_ROOT'] . '/common/footer.php';
+            include $_SERVER['DOCUMENT_ROOT'] . '/acme/common/footer.php';
             ?>
         </footer>
     </body>

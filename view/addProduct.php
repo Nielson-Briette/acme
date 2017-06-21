@@ -15,7 +15,7 @@ $catList .= "</select>";
 ?>
 <?php
 if ($_SESSION['clientData']['clientLevel'] < 2) {
- header('location: /index.php');
+ header('location: /acme/index.php');
  exit;
 }
 ?><!DOCTYPE html>
@@ -29,7 +29,7 @@ if ($_SESSION['clientData']['clientLevel'] < 2) {
     <body>
         <header>
             <?php
-            include $_SERVER['DOCUMENT_ROOT'] . '/common/header.php';
+            include $_SERVER['DOCUMENT_ROOT'] . '/acme/common/header.php';
             ?>
         </header>
         <nav class="nav">
@@ -43,7 +43,7 @@ if ($_SESSION['clientData']['clientLevel'] < 2) {
                 echo $message;
                 }
                 ?>
-                <form action="/products/index.php?action=addNewProduct" method="post">
+                <form action="/acme/products/index.php?action=addNewProduct" method="post">
                     <fieldset>
                         <label>Category</label><br>
                         <?php echo $catList; ?> <br>
@@ -55,7 +55,7 @@ if ($_SESSION['clientData']['clientLevel'] < 2) {
                         </textarea>
                         <br>
                         <label>Image</label><br>
-                        <input type="text" name="invImage" id="invImage" value="/images/no-image.png" <?php if(isset($invImage)){echo "value='$invImage'";} ?> required><br>
+                        <input type="text" name="invImage" id="invImage" value="/acme/images/no-image.png" <?php if(isset($invImage)){echo "value='$invImage'";} ?> required><br>
                         <label>Thumbnail</label><br>
                         <input type="text" name="invThumbnail" id="invThumbnail" <?php if(isset($invThumbnail)){echo "value='$invThumbnail'";} ?> required><br>
                         <label>Price</label><br>
@@ -80,7 +80,7 @@ if ($_SESSION['clientData']['clientLevel'] < 2) {
 
         <footer>
             <?php
-            include $_SERVER['DOCUMENT_ROOT'] . '/common/footer.php';
+            include $_SERVER['DOCUMENT_ROOT'] . '/acme/common/footer.php';
             ?>
         </footer>
     </body>

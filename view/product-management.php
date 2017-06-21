@@ -1,6 +1,6 @@
 <?php
 if ($_SESSION['clientData']['clientLevel'] < 2) {
- header('location: /index.php');
+ header('location: /acme/index.php');
  exit;
 }
  if (isset($_SESSION['message'])) {
@@ -18,7 +18,7 @@ if ($_SESSION['clientData']['clientLevel'] < 2) {
     <body>
         <header>
             <?php
-            include $_SERVER['DOCUMENT_ROOT'] . '/common/header.php';
+            include $_SERVER['DOCUMENT_ROOT'] . '/acme/common/header.php';
             ?>
         </header>
         <nav class="nav">
@@ -46,7 +46,7 @@ if ($_SESSION['clientData']['clientLevel'] < 2) {
 
         <footer>
             <?php
-            include $_SERVER['DOCUMENT_ROOT'] . '/common/footer.php';
+            include $_SERVER['DOCUMENT_ROOT'] . '/acme/common/footer.php';
             ?>
         </footer>
     </body>

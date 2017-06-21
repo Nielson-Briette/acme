@@ -9,7 +9,7 @@
     <body>
         <header>
             <?php
-            include $_SERVER['DOCUMENT_ROOT'] . '/common/header.php';
+            include $_SERVER['DOCUMENT_ROOT'] . '/acme/common/header.php';
             ?>
         </header>
         <nav class="nav">
@@ -22,7 +22,7 @@
                     echo $message;
                 }
                 ?>
-                <form action="/accounts/index.php?action=Login" method="post">
+                <form action="/acme/accounts/index.php?action=Login" method="post">
                     <h1>Acme Login</h1>
                     <div class="field">
                         <label for="name">Email:</label>
@@ -41,7 +41,7 @@
                         <br>
                         <p>If you have not yet registered, please click the link below to create an account</p>
                         <!--pass a name - value pair that tells the controller to deliver the registration view.-->
-                        <a class="field-button" href='/accounts/index.php?action=Register'>Create Account</a>
+                        <a class="field-button" href='/acme/accounts/index.php?action=Register'>Create Account</a>
                     </div>
                 </form>
             </div>
@@ -49,7 +49,7 @@
 
         <footer>
             <?php
-            include $_SERVER['DOCUMENT_ROOT'] . '/common/footer.php';
+            include $_SERVER['DOCUMENT_ROOT'] . '/acme/common/footer.php';
             ?>
         </footer>
     </body>

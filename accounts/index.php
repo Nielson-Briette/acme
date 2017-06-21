@@ -126,7 +126,7 @@ switch ($action) {
 
     case 'Logout':
         session_destroy();
-        header('location:/index.php');
+        header('location:/acme');
         exit;
 
     case 'client-update':
@@ -147,8 +147,11 @@ switch ($action) {
         if ($updata) {
             $message = "<p>Congratulations, $upfirstName was sucessfully updated.</p>";
             $_SESSION['message'] = $message;
+            $_SESSION['clientData']['clientFirstname'] = $upfirstName;
+            $_SESSION['clientData']['clientLastname'] = $uplastName;
+            $_SESSION['clientData']['clientEmail'] = $upEmail;
+
             include '../view/admin.php';
-            
             exit;
         } else {
             $message = "<p>Error. $upfirstName was not updated.</p>";
@@ -161,7 +164,7 @@ switch ($action) {
     case 'updatePassword':
         $updateId = filter_input(INPUT_POST, 'updateId', FILTER_SANITIZE_NUMBER_INT);
         $updatePass = filter_input(INPUT_POST, 'updatePass', FILTER_SANITIZE_STRING);
-        if (empty($updateId) || empty($updatePass)) {
+        if (empty($updateId) || empty($clientPass)) {
             $message = '<p>Please complete all the information</p>';
         }
         

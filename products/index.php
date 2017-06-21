@@ -35,8 +35,8 @@ switch ($action) {
             $prodList .= '<tbody>';
             foreach ($products as $product) {
                 $prodList .= "<tr><td>$product[invName]</td>";
-                $prodList .= "<td><a href='/products?action=mod&id=$product[invId]' title='Click to modify'>Modify</a></td>";
-                $prodList .= "<td><a href='/products?action=del&id=$product[invId]' title='Click to delete'>Delete</a></td></tr>";
+                $prodList .= "<td><a href='/acme/products?action=mod&id=$product[invId]' title='Click to modify'>Modify</a></td>";
+                $prodList .= "<td><a href='/acme/products?action=del&id=$product[invId]' title='Click to delete'>Delete</a></td></tr>";
             }
             $prodList .= '</tbody></table>';
         } else {
@@ -65,7 +65,7 @@ switch ($action) {
         $newCategory = newCategory($categoryname);
 
         if ($newCategory === 1) {
-            header('Location:/products/index.php?action=addCategory');
+            header('Location:/acme/products/index.php?action=addCategory');
         } else {
             $message = "<p>Sorry but the new cat $categoryname has failed to be added. Please try again.</p>";
         }
@@ -136,7 +136,7 @@ switch ($action) {
         if ($updateResult) {
             $message = "<p class='notify'>Congratulations, $prodName was successfully updated.</p>";
             $_SESSION['message'] = $message;
-            header('location: /products/');
+            header('location: /acme/products/');
             exit;
         } else {
             $message = "<p>Error. The new product was not updated.</p>";
@@ -163,16 +163,27 @@ switch ($action) {
         if ($deleteResult) {
          $message = "<p class='notice'>Congratulations, $prodName was successfully deleted.</p>";
          $_SESSION['message'] = $message;
-         header('location: /products/');
+         header('location: /acme/products/');
          exit;
         } else {
          $message = "<p class='notice'>Error: $prodName was not deleted.</p>";
          $_SESSION['message'] = $message;
-         header('location: /products/');
+         header('location: /acme/products/');
          exit;
         }
     break;
         
-}
-
+    case 'category':
+     $type = filter_input(INPUT_GET, 'type', FILTER_SANITIZE_STRING);
+     $products = getProductsByCategory($type);
+     if(!count($products)){
+      $message = "<p class='notice'>Sorry, no $type products could be found.</p>";
+     } else {
+      $prodDisplay = buildProductsDisplay($products);
+     }
+//     echo $prodDisplay;
+//    exit;
+     include '../view/category.php';
+    break;
  
+}

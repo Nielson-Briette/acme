@@ -37,19 +37,19 @@
                     <li>Email: $emailaddress</li>
                 </ul>";
                 ?>
-                <p><a href="/accounts/index.php?action=client-update">Update Account Information</a></p>
+                <p><a href="/acme/accounts/index.php?action=client-update">Update Account Information</a></p>
             <?php
                 if ($level == 3){
                 echo '<h1> Administrative Functions </h1>
                 <p>Use the link below to manage products</p>
-                <a href="/products/index.php?action=product-management">Products</a><br>';
+                <a href="/acme/products/index.php?action=product-management">Products</a><br>';
                 }
                 ?>
         </main>
 
         <footer>
             <?php
-            include $_SERVER['DOCUMENT_ROOT'] . '/common/footer.php';
+            include $_SERVER['DOCUMENT_ROOT'] . '/acme/common/footer.php';
             ?>
         </footer>
     </body>

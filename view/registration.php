@@ -9,7 +9,7 @@
     <body>
         <header>
             <?php
-            include $_SERVER['DOCUMENT_ROOT'] . '/common/header.php';
+            include $_SERVER['DOCUMENT_ROOT'] . '/acme/common/header.php';
             ?>
         </header>
 
@@ -23,7 +23,7 @@
                     echo $message;
                 }
                 ?>
-                <form method="post" action="/accounts/index.php">
+                <form method="post" action="/acme/accounts/index.php">
                         <h1>Acme Registration</h1>
                         <p> All fields required </p>
                         <label>
@@ -61,7 +61,7 @@
 
         <footer>
             <?php
-            include $_SERVER['DOCUMENT_ROOT'] . '/common/footer.php';
+            include $_SERVER['DOCUMENT_ROOT'] . '/acme/common/footer.php';
             ?>
         </footer>
     </body>

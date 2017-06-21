@@ -8,19 +8,19 @@ and open the template in the editor.
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link href="/css/style.css" type="text/css" rel="stylesheet" media="screen">
+        <link href="/acme/css/style.css" type="text/css" rel="stylesheet" media="screen">
         <title></title>
     </head>
     <body>
         <header>
             <?php
-            include $_SERVER['DOCUMENT_ROOT'] . '/common/header.php';
+            include $_SERVER['DOCUMENT_ROOT'] . '/acme/common/header.php';
             ?>
         </header>
         <div>
             <nav>
                  <?php
-            include $_SERVER['DOCUMENT_ROOT'] . '/common/navigation.php';
+            include $_SERVER['DOCUMENT_ROOT'] . '/acme/common/navigation.php';
             ?>
             </nav>
             <main><h1>Server Error</h1>
@@ -29,7 +29,7 @@ and open the template in the editor.
         </div>
         <footer>
                <?php
-            include $_SERVER['DOCUMENT_ROOT'] . '/common/footer.php';
+            include $_SERVER['DOCUMENT_ROOT'] . '/acme/common/footer.php';
             ?>
         </footer>
     </body>

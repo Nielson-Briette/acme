@@ -52,7 +52,7 @@ and open the template in the editor.
         width: 85%;
         min-height: 100%;
     }
-    
+
     #logout {
         float: right;
         padding-top: 20px;
@@ -117,12 +117,12 @@ and open the template in the editor.
     #tools::before {
         content: url("/images/site/account.gif");
     }
-    
+
     header span{
         margin-right: .5em;
         font-size: smaller; 
     }
-    
+
     header {
         display: flex;
         justify-content: space-between;
@@ -134,142 +134,175 @@ and open the template in the editor.
         background-repeat: no-repeat;
         background-size: cover;
         height: 100%;
-
-    }
-
-    main {
-        flex: 1 0 auto;
-    }
-
-    footer {
-        background-color: #ffffff;
-        color: #000000; 
-        text-align: center;
-    }
-
-    hr {
-        background-color: #fff;
-        border-top: 4px dashed #de2226;
-    }
-
-    /*RECIPES*/
-
-    figure .image {
-        width: 100%;
-    }
-    .flexbox{
-        display: flex;
-    }
-    
-    .recipes {
-      display: flex;
-    }
-
-    .flexrecipe {
-        width: 200px;
-        height: 80px;
-        margin: 10px;
-        display: flex;
-    }
-
-    .flexrecipe figure {
-        text-align: center;
-        display: table;
-        max-width: 30%; 
-        margin: 10px auto; 
-    }
-
-    .reviews {
-        -webkit-flex: 1 0 0;
-        flex: 1 0 0;
-        flex-wrap:  wrap;
-        display: flex;
-        justify-content: flex-end;
-        text-decoration: none;
-    }
-
-    /*HERO*/
-    .hero {
-        background-image: url("/images/site/rocketfeature.jpg");
-        background-repeat: no-repeat;
-        color: #990033;
-        width:100%;
-        height: 500px;
-        margin: 0 auto;
-        position: relative; 
-
-    }
-
-    .acmerocket {
-        display: flex;
-        justify-content: flex-end;
-        padding-right: 20px;
-    }
-    .acmerocket li {
-        list-style: none;
-        text-align: left;
-    }
-    #actionbtn {
-        margin: 10px 0px 0px 0px;
-    }
-
-    /*FORM FOR LOGIN AND REGISTRATION*/
-    .login { 
-        border: solid 3px #eee;
-        background-color: #F5F5F5;
-        padding: 30px;
-        display: flex;
-        align-items: center;
-        flex-direction: column;
-        width: 20%;
-        font-size: 1em;
-       justify-content: center;
-       align-items: center;
+        box-sizing: border-box;
          }
-    
-    .field-button {
-         margin-top: 6px;
-        -webkit-border-radius: 5;
-        -moz-border-radius: 5;
-        border-radius: 5px;
-        color: #ffffff;
-        background: #de2226;
-        padding: 10px 20px 10px 20px;
-        text-decoration: none;
-        display: flex;
-        width: 100%;
-        font-size: 1.5em;
-    }
-    .field-button:hover {
-        color: #de2226;
-        background-color: white;
+        *, *:before, *:after{
+            box-sizing: inherit;
+        }
+
+        main {
+            flex: 1 0 auto;
+        }
+
+        footer {
+            background-color: #ffffff;
+            color: #000000; 
+            text-align: center;
+        }
+
+        hr {
+            background-color: #fff;
+            border-top: 4px dashed #de2226;
+        }
+
+        /*RECIPES*/
+
+        figure .image {
+            width: 100%;
+        }
+        .flexbox{
+            display: flex;
+        }
+
+        .recipes {
+            display: flex;
+        }
+
+        .flexrecipe {
+            width: 200px;
+            height: 80px;
+            margin: 10px;
+            display: flex;
+        }
+
+        .flexrecipe figure {
+            text-align: center;
+            display: table;
+            max-width: 30%; 
+            margin: 10px auto; 
+        }
+
+        .reviews {
+            -webkit-flex: 1 0 0;
+            flex: 1 0 0;
+            flex-wrap:  wrap;
+            display: flex;
+            justify-content: flex-end;
+            text-decoration: none;
+        }
+
+        /*HERO*/
+        .hero {
+            background-image: url("/images/site/rocketfeature.jpg");
+            background-repeat: no-repeat;
+            color: #990033;
+            width:100%;
+            height: 500px;
+            margin: 0 auto;
+            position: relative; 
+
+        }
+
+        .acmerocket {
+            display: flex;
+            justify-content: flex-end;
+            padding-right: 20px;
+        }
+        .acmerocket li {
+            list-style: none;
+            text-align: left;
+        }
+        #actionbtn {
+            margin: 10px 0px 0px 0px;
+        }
+
+        /*FORM FOR LOGIN AND REGISTRATION*/
+        .login { 
+            border: solid 3px #eee;
+            background-color: #F5F5F5;
+            padding: 30px;
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+            width: 20%;
+            font-size: 1em;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .field-button {
+            margin-top: 6px;
+            -webkit-border-radius: 5;
+            -moz-border-radius: 5;
+            border-radius: 5px;
+            color: #ffffff;
+            background: #de2226;
+            padding: 10px 20px 10px 20px;
+            text-decoration: none;
+            display: flex;
+            width: 100%;
+            font-size: 1.5em;
+        }
+        .field-button:hover {
+            color: #de2226;
+            background-color: white;
+        }
+
+        #prod-display{
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+        }
+        #prod-display li{
+            margin-bottom: .5em;
+            border: 1px #ccc solid;
+            list-style-type: none;
+            flex: 1 1 auto;
+        }
+        #prod-display li img{
+            width: 100%;
+            height: 200px;
+        }
+
+    } /*} ENDS SCREEN SIZE SECTION*/
+
+    /*  Tablets */
+    @media only screen and (min-width : 768px) 
+    {
+        .hero {
+            background-image: url("/images/site/rocketfeature.jpg");
+            background-repeat: no-repeat;
+            color: #990033;
+            background-size:  cover;
+        }
     }
 
-} /*} ENDS SCREEN SIZE SECTION*/
+    /*Desktops*/ 
+    @media only screen and (min-width : 992px) 
+    {
 
-/*  Tablets */
-@media only screen and (min-width : 768px) {
-    .hero {
-        background-image: url("/images/site/rocketfeature.jpg");
-        background-repeat: no-repeat;
-        color: #990033;
-        background-size:  cover;
-    }
-}
+        .hero {
+            background-image: url("/images/site/rocketfeature.jpg");
+            background-repeat: no-repeat;
+            color: #990033;
+            background-size:  cover;
+        }
+        .nav li {
+            list-style-type: none;
+            float: left;
+            font-family: 'Baloo', sans-serif;
+            font-size: 2em;
+        }
 
-/*Desktops*/ 
-@media only screen and (min-width : 992px) {
+        #prod-display{
+            flex-flow: row wrap;
+            justify-content: flex-start;
+        }
 
-    .hero {
-        background-image: url("/images/site/rocketfeature.jpg");
-        background-repeat: no-repeat;
-        color: #990033;
-        background-size:  cover;
+        #prod-display li{
+            max-width: 200px;
+            flex: 1 0 auto;
+            text-align: center;
+            max-height: 400px; }
     }
-    .nav li {
-        list-style-type: none;
-        float: left;
-        font-family: 'Baloo', sans-serif;
-        font-size: 2em;
-    }
-}

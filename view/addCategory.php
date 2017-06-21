@@ -1,6 +1,6 @@
 <?php
 if ($_SESSION['clientData']['clientLevel'] < 2) {
- header('location: /index.php');
+ header('location: /acme/index.php');
  exit;
 }
 ?><!DOCTYPE html>
@@ -14,7 +14,7 @@ if ($_SESSION['clientData']['clientLevel'] < 2) {
     <body>
         <header>
             <?php
-            include $_SERVER['DOCUMENT_ROOT'] . '/common/header.php';
+            include $_SERVER['DOCUMENT_ROOT'] . '/acme/common/header.php';
             ?>
         </header>
         <nav class="nav">
@@ -28,7 +28,7 @@ if ($_SESSION['clientData']['clientLevel'] < 2) {
                 }
                 ?>
                 <h1>Add Category</h1>
-                <form action="/products/index.php?action=addNewCategory" method="post">
+                <form action="/acme/products/index.php?action=addNewCategory" method="post">
                     <input type="text" name="categoryname" <?php if(isset($categoryname)){echo "value='$categoryname'";} ?> required />
                     <br>
                     <button type='submit' >Add Category</button>
@@ -38,7 +38,7 @@ if ($_SESSION['clientData']['clientLevel'] < 2) {
 
         <footer>
             <?php
-            include $_SERVER['DOCUMENT_ROOT'] . '/common/footer.php';
+            include $_SERVER['DOCUMENT_ROOT'] . '/acme/common/footer.php';
             ?>
         </footer>
     </body>

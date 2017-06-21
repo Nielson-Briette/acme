@@ -1,6 +1,6 @@
 <?php
 if ($_SESSION['clientData']['clientLevel'] < 2) {
- header('location: /index.php');
+ header('location: /acme/index.php');
  exit;
 }
 ?><!DOCTYPE html>
@@ -14,7 +14,7 @@ if ($_SESSION['clientData']['clientLevel'] < 2) {
     <body>
         <header>
             <?php
-            include $_SERVER['DOCUMENT_ROOT'] . '/common/header.php';
+            include $_SERVER['DOCUMENT_ROOT'] . '/acme/common/header.php';
             ?>
         </header>
         <nav class="nav">
@@ -24,7 +24,7 @@ if ($_SESSION['clientData']['clientLevel'] < 2) {
             <div class="login">
            <h1><?php if(isset($prodInfo['invName'])){ echo "Delete $prodInfo[invName]";} ?></h1>
            
-                <form method="post" action="/products/">
+                <form method="post" action="/acme/products/">
                     <fieldset>
                         
                         <label>Product Name</label><br>
@@ -52,7 +52,7 @@ if ($_SESSION['clientData']['clientLevel'] < 2) {
 
         <footer>
             <?php
-            include $_SERVER['DOCUMENT_ROOT'] . '/common/footer.php';
+            include $_SERVER['DOCUMENT_ROOT'] . '/acme/common/footer.php';
             ?>
         </footer>
     </body>
