@@ -29,16 +29,33 @@ function buildNav() {
 }
 
 //function to build a display of products with an unordered list
-function buildProductsDisplay($products) {
-    $pd = '<ul id="prod-display">';
-    foreach ($products as $product) {
-        $pd .= '<li>';
-        $pd .= "<img src='$product[invThumbnail]' alt='Image of $product[invName] on Acme.com'>";
-        $pd .= '<hr>';
-        $pd .= "<h2>$product[invName]</h2>";
-        $pd .= "<span>$$product[invPrice]</span>";
-        $pd .= '</li>';
-    }
-    $pd .= '</ul>';
+function buildProductsDisplay($products){
+ $pd = '<ul id="prod-display">';
+ foreach ($products as $product) {
+  $pd .= '<li>';
+  $pd .= "<a href='/acme/products/index.php?action=details&id=$product[invId]'><img src='$product[invThumbnail]' alt='Image of $product[invName] on Acme.com'>";
+  $pd .= "<h2></h2>";
+  $pd .= "<h2>$product[invName]</h2></a>";
+  $pd .= "<span>$$product[invPrice]</span>";
+  $pd .= '</li>';
+ }
+ $pd .= '</ul>';
+ return $pd;
+}
+
+//function to build a display of product information
+function buildProductsDetail($product) {
+    $pd = '<div id="prod-detail">';
+        $pd .= "<h1>$product[invName]</h1>";
+        $pd .= "<img src='$product[invImage]' alt='Image of $product[invName] on Acme.com'>";
+        $pd .= "$product[invDescription]";
+        $pd .= "Price: $product[invPrice]";
+        $pd .= "Size: $product[invSize]";
+        $pd .= "Weight: $product[invWeight]";
+        $pd .= "Quantity: $product[invStock]";
+        $pd .= "Location: $product[invLocation]";
+        $pd .= "Style: $product[invStyle]";
+        $pd .= "Vendor: $product[invVendor]";
+    $pd .= '</div>';
     return $pd;
 }
