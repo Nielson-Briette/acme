@@ -29,33 +29,37 @@ function buildNav() {
 }
 
 //function to build a display of products with an unordered list
-function buildProductsDisplay($products){
- $pd = '<ul id="prod-display">';
- foreach ($products as $product) {
-  $pd .= '<li>';
-  $pd .= "<a href='/acme/products/index.php?action=details&id=$product[invId]'><img src='$product[invThumbnail]' alt='Image of $product[invName] on Acme.com'>";
-  $pd .= "<h2></h2>";
-  $pd .= "<h2>$product[invName]</h2></a>";
-  $pd .= "<span>$$product[invPrice]</span>";
-  $pd .= '</li>';
- }
- $pd .= '</ul>';
- return $pd;
+function buildProductsDisplay($products) {
+    $pd = '<ul id="prod-display">';
+    foreach ($products as $product) {
+        $pd .= '<li>';
+        $pd .= "<a href='/acme/products/index.php?action=details&id=$product[invId]'><img src='$product[invThumbnail]' alt='Image of $product[invName] on Acme.com'>";
+        $pd .= "<h2></h2>";
+        $pd .= "<h2>$product[invName]</h2></a>";
+        $pd .= "<span>$$product[invPrice]</span>";
+        $pd .= '</li>';
+    }
+    $pd .= '</ul>';
+    return $pd;
 }
 
 //function to build a display of product information
 function buildProductsDetail($product) {
-    $pd = '<div id="prod-detail">';
-        $pd .= "<h1>$product[invName]</h1>";
-        $pd .= "<img src='$product[invImage]' alt='Image of $product[invName] on Acme.com'>";
-        $pd .= "$product[invDescription]";
-        $pd .= "Price: $product[invPrice]";
-        $pd .= "Size: $product[invSize]";
-        $pd .= "Weight: $product[invWeight]";
-        $pd .= "Quantity: $product[invStock]";
-        $pd .= "Location: $product[invLocation]";
-        $pd .= "Style: $product[invStyle]";
-        $pd .= "Vendor: $product[invVendor]";
-    $pd .= '</div>';
+    $pd = '<ul id="prod-detail">';
+    $pd .= '<li>';
+    $pd .= "<h1>$product[invName]</h1>";
+    $pd .= "<img src='$product[invImage]' alt='Image of $product[invName] on Acme.com'><br>";
+    $pd .= "<hr>";
+    $pd .= "$product[invDescription]<br>";
+    $pd .= "Price: $product[invPrice]<br>";
+    $pd .= "Size: $product[invSize]<br>";
+    $pd .= "Weight: $product[invWeight]<br>";
+    $pd .= "Quantity: $product[invStock]<br>";
+    $pd .= "Location: $product[invLocation]<br>";
+    $pd .= "Style: $product[invStyle]<br>";
+    $pd .= "Vendor: $product[invVendor]";
+      $pd .= '</li>';
+    $pd .= '</ul>';
+   
     return $pd;
 }
