@@ -281,6 +281,11 @@ and open the template in the editor.
         width: auto;
         height: 200px;
     }
+    
+    #image-display {
+        display: flex;
+        list-style-type: none;
+    }
 
 } /*} ENDS SCREEN SIZE SECTION*/
 
