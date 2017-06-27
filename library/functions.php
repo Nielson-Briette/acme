@@ -220,3 +220,20 @@ function resizeImage($old_image_path, $new_image_path, $max_width, $max_height) 
     // Free any memory associated with the old image
     imagedestroy($old_image);
 }
+
+//wrapping thumbnails from array into html
+//function to build a display of product information
+function buildProdThumbnails($prodThumbnails) {
+    
+    $pd = '<ul id="prod-detail">';
+    $pd .= "<hr>";
+    $pd .= "<h1>Additional Thumbnails</h1>";
+    foreach ($prodThumbnails as $thumbnail) {
+        $pd .= '<li>';
+        $pd .= "<img src='$thumbnail[ImgPath]' alt='Thumbnail Image of $thumbnail[imgName] on Acme.com'><br>";
+        $pd .= '</li>';
+    }
+    $pd .= '</ul>';
+
+    return $pd;
+}

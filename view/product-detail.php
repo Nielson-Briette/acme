@@ -17,9 +17,10 @@
             <?php echo buildNav(); ?>
         </nav>
         <main>
-            <h1><?php echo $product[invName]; ?></h1>
+            <!--<h1><?php echo $products[$prodName] ?></h1>-->
             <?php if(isset($message)){ echo $message; } ?>
             <?php if(isset($prodDetail)){ echo $prodDetail; } ?>
+            <?php if(isset($thumbnails)) {echo $thumbnails; } ?>
         </main>
         <footer>
             <?php

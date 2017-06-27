@@ -41,6 +41,17 @@ function getImages() {
     return $imageArray;
 }
 
+// Get thumbnail Image Information from images table
+function getThumbnails($prodId) {
+    $db = acmeConnect();
+    $sql = "SELECT * FROM images WHERE imgName LIKE '%tn.%' AND invId = $prodId";
+    $stmt = $db->prepare($sql);
+    $stmt->execute();
+    $imageArray = $stmt->fetchAll(PDO::FETCH_NAMED);
+    $stmt->closeCursor();
+    return $imageArray;
+}
+
 // Delete image information from the images table
 function deleteImage($id) {
     $db = acmeConnect();

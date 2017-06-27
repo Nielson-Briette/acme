@@ -8,6 +8,7 @@ require_once '../model/acme-model.php';
 require_once '../model/products-model.php';
 require_once '../library/functions.php';
 require_once '../model/accounts-model.php';
+require_once '../model/uploads-model.php';
 
 // Get the array of categories
 $categoriesAndIds = getCategoriesAndIds();
@@ -188,10 +189,16 @@ switch ($action) {
         $prodId = filter_input(INPUT_GET, 'id', FILTER_SANITIZE_STRING);
         $product = getProductInfo($prodId);
         
+        //call getThumbnails function
+        $prodThumbnails = getThumbnails($prodId);
+        
         if(!count($product)){
-        $message = "<p class='notice'>Sorry, no $prodId  could be found.</p>";
+            $message = "<p class='notice'>Sorry, no $prodId  could be found.</p>";
+//        } else if (!count($prodThumbnails)) {
+//            $prodDetail = buildProductsDetail($product);
         } else {
-        $prodDetail = buildProductsDetail($product);
+            $prodDetail = buildProductsDetail($product);
+            $thumbnails =buildProdThumbnails($prodThumbnails);
         }
         include '../view/product-detail.php';
         break;
