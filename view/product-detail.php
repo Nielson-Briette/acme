@@ -18,9 +18,25 @@
         </nav>
         <main>
             <!--<h1><?php echo $products[$prodName] ?></h1>-->
+             <p>Product reviews can be found at the bottom of the page.</p>
             <?php if(isset($message)){ echo $message; } ?>
             <?php if(isset($prodDetail)){ echo $prodDetail; } ?>
             <?php if(isset($thumbnails)) {echo $thumbnails; } ?>
+           
+            <h2>Customer Reviews</h2>
+            <?php
+                if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
+          echo " <p>Reviews can be added upon <a href='/acme/view/login.php'>login</a></p> ";
+          }
+          else {
+             echo " <form action='/acme/accounts/index.php?action='Login' method='post'>
+                    <input type='text' />
+                    <br>
+                    <button type='submit' >Add Review</button>
+            </form>";
+            }
+            ?>
+            
         </main>
         <footer>
             <?php

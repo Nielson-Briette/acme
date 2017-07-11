@@ -128,6 +128,15 @@ switch ($action) {
         session_destroy();
         header('location:/acme');
         exit;
+        
+         case 'admin':
+        if(!isset($_SESSION['clientData']) or($_SESSION['clientData']['clientId'] == NULL)) {
+    
+        include '../view/home.php';
+        break;}
+    //Send them to the admin view
+    include '../view/admin.php';
+            break;
 
     case 'client-update':
         include '../view/client-update.php';
@@ -187,3 +196,4 @@ switch ($action) {
 
         break;
 }
+

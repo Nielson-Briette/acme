@@ -224,10 +224,7 @@ function resizeImage($old_image_path, $new_image_path, $max_width, $max_height) 
 //wrapping thumbnails from array into html
 //function to build a display of product information
 function buildProdThumbnails($prodThumbnails) {
-    
-    $pd = '<ul id="prod-detail">';
-    $pd .= "<hr>";
-    $pd .= "<h1>Additional Thumbnails</h1>";
+    $pd = '<ul id="prod-thumbnail" style="display:flex; list-style-type:none;">';
     foreach ($prodThumbnails as $thumbnail) {
         $pd .= '<li>';
         $pd .= "<img src='$thumbnail[ImgPath]' alt='Thumbnail Image of $thumbnail[imgName] on Acme.com'><br>";

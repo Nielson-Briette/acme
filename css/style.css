@@ -230,8 +230,6 @@ and open the template in the editor.
 
     .field-button {
         margin-top: 6px;
-        -webkit-border-radius: 5;
-        -moz-border-radius: 5;
         border-radius: 5px;
         color: #ffffff;
         background: #de2226;
@@ -278,8 +276,8 @@ and open the template in the editor.
         max-width: 50%;
     }
     #prod-detail li img{
-        width: auto;
-        height: 200px;
+        width: 200px;
+        max-height: 200px;
     }
     
     #image-display {
@@ -326,7 +324,7 @@ and open the template in the editor.
         font-size: 1.5em;
     }
 
-    #prod-detail{
+    #prod-detail {
         flex-flow: row wrap;
         justify-content: center;
     }
@@ -338,5 +336,6 @@ and open the template in the editor.
         font-weight: bold;
         font-size: 1.2em;
     }
+
 }
 

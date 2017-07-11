@@ -24,9 +24,9 @@ if($action == NULL){
 }
 }
 
-// Check if the firstname cookie exists, get its value
-if(isset($_COOKIE['firstname'])){
-  $cookieFirstname = filter_input(INPUT_COOKIE, 'firstname', FILTER_SANITIZE_STRING);
+// Check if the firstname session exists
+if(isset($_SESSION['firstname'])){
+  $firstname = $_SESSION['clientData']['clientFirstname'];
 }
 
 switch ($action){

@@ -1,8 +1,8 @@
 <img src="/acme/images/site/logo.gif" alt="logo for my site">   
 <div id="tools">   
     <?php
-    if (isset($cookieFirstname)) {
-        echo "<span>Welcome $cookieFirstname</span>";
+    if(isset($_SESSION['firstname'])){
+        echo "<span><a href='/acme/accounts/index.php?action=admin'>Welcome $firstname</a></span>";
     }
     ?>
     
