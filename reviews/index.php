@@ -30,8 +30,8 @@ case 'addNewReview':
     $newreview = filter_input(INPUT_POST, 'newReview', FILTER_SANITIZE_STRING);
     //deliver view to edit a review
         if (empty($newreview)) {
-            $message = '<p>Please provide information for all empty form fields.</p>';
-            include '../view/newReview.php';
+            $message = '<p><b>ERROR: Please provide information for all empty form fields.</b></p>';
+            include '../view/product-detail.php';
             exit;
         }
 //handle the review update
@@ -39,23 +39,23 @@ case 'addNewReview':
 
 //deliver a view to confirm deletion of review 
         if ($newReview === 1) {
-            header('Location:/acme/products/index.php?action=addReview');
+            header('Location:/acme/products/index.php?action=addNewReview');
         } else {
             $message = "<p>Sorry but your review has failed to be added. Please try again.</p>";
         }
-        include '../view/addReview.php';
+        include '../view/product-detail.php';
         exit;
     
     //handle the review deletion
-          $updateResult = updateProduct($catType, $prodName, $prodDesc, $prodImage, $prodThumbnail, $prodPrice, $prodStock, $prodSize, $prodWeight, $prodLocation, $prodVendor, $prodStyle, $prodId);
-        if ($updateResult) {
-            $message = "<p class='notify'>Congratulations, $prodName was successfully updated.</p>";
+          $updateResult = updateReview($updateReview);
+        if ($updateReview) {
+            $message = "<p class='notify'>Congratulations your review was successfully updated.</p>";
             $_SESSION['message'] = $message;
             header('location: /acme/products/');
             exit;
         } else {
-            $message = "<p>Error. The new product was not updated.</p>";
-            include '../view/prod-update.php';
+            $message = "<p>Error. The new review was not updated.</p>";
+            include '../view/product-detail.php';
             exit;
         }
         break;
@@ -63,7 +63,7 @@ case 'addNewReview':
 
        if ($_SESSION['loggedin'] = TRUE){
         // Send them to the admin view
-        include '../view/admin.php';
+        include '/acme/view/admin.php';
        } else {
            include '/acme/index.php';
        }

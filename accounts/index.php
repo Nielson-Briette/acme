@@ -63,6 +63,7 @@ switch ($action) {
         // Check and report the result
         if ($regOutcome === 1) {
             setcookie('firstname', $firstname, strtotime('+1 year'), '/');
+//            $_SESSION['firstname'] = $firstname;
             $message = "<p>Thanks for registering $firstname. Please use your email and password to login.</p>";
             include '../view/login.php';
             exit;
@@ -119,6 +120,9 @@ switch ($action) {
         array_pop($clientData);
         // Store the array into the session
         $_SESSION['clientData'] = $clientData;
+        $_SESSION['firstname'] = $clientData['clientFirstname'];
+        
+        setcookie('firstname', "", time() -3600);        
         // Send them to the admin view
         include '../view/admin.php';
         exit;
@@ -126,6 +130,7 @@ switch ($action) {
 
     case 'Logout':
         session_destroy();
+        //todo: destroy cookie firstname
         header('location:/acme');
         exit;
         

@@ -227,7 +227,7 @@ and open the template in the editor.
         justify-content: center;
         align-items: center;
     }
-
+    
     .field-button {
         margin-top: 6px;
         border-radius: 5px;
@@ -243,7 +243,7 @@ and open the template in the editor.
         color: #de2226;
         background-color: white;
     }
-
+    
     #prod-display{
         margin: 0;
         padding: 0;

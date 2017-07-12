@@ -1,8 +1,14 @@
 <img src="/acme/images/site/logo.gif" alt="logo for my site">   
 <div id="tools">   
     <?php
+    
     if(isset($_SESSION['firstname'])){
-        echo "<span><a href='/acme/accounts/index.php?action=admin'>Welcome $firstname</a></span>";
+        $firstname = $_SESSION['firstname'];
+        echo "<span><a href='/acme/accounts/index.php?action=admin'>Welcome $firstname </a></span>";
+    }
+    
+    else { 
+        echo"<span><a href='/acme/accounts/index.php?action=home'>Home </a></span>";
     }
     ?>
     
