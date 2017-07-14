@@ -60,13 +60,19 @@
 
 
             <h1> Your Reviews </h1>
-            <?php
-            if (isset($message)) {
-                echo $message;
-            } if (isset($reviewsList)) {
-                echo $reviewsList;
-            }
-            ?>
+          
+                    <?php
+                    $clientId = $_SESSION['clientData']['clientId'];
+                    $reviews = getReviewByClient($clientId);
+                    $reviewsList = "<ul>";
+                    foreach ($reviews as $review) {
+                       {
+                            $reviewsList .= "<li>$review[reviewText] was written on $review[reviewDate]</li>";
+                        }
+                    }
+                    $reviewsList .= "</ul>";
+                    echo $reviewsList;
+                    ?>
 
         </main>
 

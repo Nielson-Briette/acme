@@ -26,6 +26,7 @@ switch ($action) {
     case 'addReview':
         $reviewText = filter_input(INPUT_POST, 'reviewText', FILTER_SANITIZE_STRING);
         $invId = filter_input(INPUT_POST, 'invId', FILTER_SANITIZE_NUMBER_INT);
+        $prodId = filter_input(INPUT_POST, 'invId', FILTER_SANITIZE_NUMBER_INT);
         $clientId = filter_input(INPUT_POST, 'clientId', FILTER_SANITIZE_NUMBER_INT);
     
         if (empty($reviewText)) {
@@ -47,6 +48,23 @@ switch ($action) {
         }
         break;
         
+           case'review-management':
+        $reviews = getReviews();
+        if (count($reviews) > 0) {
+            $reviewList = '<table>';
+            $reviewList .= '<thead>';
+            $reviewList .= '<tr><th>Product Name</th><td>&nbsp;</td><td>&nbsp;</td></tr>';
+            $reviewList .= '</thead>';
+            $reviewList .= '<tbody>';
+            foreach ($reviews as $review) {
+                $reviewList .= "<tr><td>$review[invName]</td>";
+                $reviewList .= "<td><a href='/acme/products?action=mod&id=$review[invId]' title='Click to modify'>Modify</a></td>";
+                $reviewList .= "<td><a href='/acme/products?action=del&id=$review[invId]' title='Click to delete'>Delete</a></td></tr>";
+            }
+            $reviewList .= '</tbody></table>';
+        } else {
+            $message = '<p class="notify">Sorry, no reviews were returned.</p>';
+        }
 
     case 'editReview':
 

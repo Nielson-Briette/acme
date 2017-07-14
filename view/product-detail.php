@@ -59,7 +59,8 @@
 
             <!--display previous written reviews here-->    
             <?php if (isset($_SESSION['loggedin'])) : ?>
-                <p> Your product reviews </p>
+            <div class="login">
+                <h2> Your product reviews </h2>
             
                 <p><?php echo substr("$firstname", 0, 1); ?><?php echo $lastname; ?> Wrote 
                  
@@ -69,17 +70,17 @@
                     $reviewsList = "<ul>";
                     foreach ($reviews as $review) {
                         if ($review['invId'] == $prodId) {
-                            $reviewsList .= "<li>$review[reviewText] was written on $review[reviewDate]</li>";
+                            $reviewsList .= "<li>$review[reviewText] was written on $review[reviewDate] </li>";
                         }
                     }
                     $reviewsList .= "</ul>";
                     echo $reviewsList;
                     ?>
-
+                    
                 <?php else : ?>
                 <p>Please <a href="/acme/accounts/index.php?action=login">login to see your reviews.</a></p>
             <?php endif; ?>       
-
+            </div>
 
         </main>
         <footer>
