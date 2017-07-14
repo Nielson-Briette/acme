@@ -1,70 +1,87 @@
 <?php
+
 //REVIEWS MODEL
-
-
+//
 //function for inserting a new review into the reviews table
-    function newReview($newreview) {
+function insertReview($reviewText, $invId, $clientId) {
     $db = acmeConnect();
-    $sql = 'INSERT INTO reviews (newReview)
-           VALUES (:newreview )';
+    $sql = 'INSERT INTO reviews (reviewText, invId, clientId)
+           VALUES (:reviewText, :invId, :clientId)';
     $stmt = $db->prepare($sql);
-    $stmt->bindValue(':newreview', $newreview, PDO::PARAM_STR);
+    $stmt->bindValue(':reviewText', $reviewText, PDO::PARAM_STR);
+    $stmt->bindValue(':invId', $invId, PDO::PARAM_INT);
+    $stmt->bindValue(':clientId', $clientId, PDO::PARAM_INT);
     $stmt->execute();
     $rowsChanged = $stmt->rowCount();
     $stmt->closeCursor();
     return $rowsChanged;
-}
-//function for getting reviews by invId
-function getReviewInvId($reviewInvId){
-    $db = acmeConnect();
-    $sql = 'SELECT * FROM reviews WHERE reviewId = :reviewInvId';
-    $stmt = $db->prepare($sql);
-    $stmt->bindValue(':reviewInvId', $reviewInvId, PDO::PARAM_INT);
-    $stmt->execute();
-    $reviewIdInfo = $stmt->fetch(PDO::FETCH_NAMED);
-    $stmt->closeCursor();
-    return $reviewIdInfo;
 }
 
-//function for getting reviews based by client id
-function getClientInfo($clientInfoId){
+function checkExistingReview($clientId, $prodId) {
     $db = acmeConnect();
-    $sql = 'SELECT * FROM reviews WHERE clientId = :clientInfoId';
+    $sql = "SELECT reviewId, reviewText, reviewDate, invId, clientId FROM reviews  WHERE invId = :prodId AND clientId = :clientId";
     $stmt = $db->prepare($sql);
-    $stmt->bindValue(':clientInfoId', $clientInfoId, PDO::PARAM_INT);
+    $stmt->bindValue(':clientId', $clientId);
+    $stmt->bindValue(':prodId', $prodId);
     $stmt->execute();
-    $clientInfo = $stmt->fetch(PDO::FETCH_NAMED);
+    $checkReviewArray = $stmt->fetchAll(PDO::FETCH_ASSOC);
     $stmt->closeCursor();
-    return $clientInfo;
+    return $checkReviewArray;
 }
-//function for getting a review based by review id
-function getReviewInfo($clientReviewId){
+
+function getReviewByClient($clientId) {
     $db = acmeConnect();
-    $sql = 'SELECT * FROM reviews WHERE reviewId = :clientReviewId';
+    $sql = "SELECT reviews.reviewId, reviews.reviewText, reviews.reviewDate, reviews.clientId, reviews.invId, "
+            . "invName FROM inventory INNER JOIN reviews ON reviews.clientId = :clientId AND "
+            . "reviews.invId = inventory.invId ORDER BY reviews.reviewDate DESC";
     $stmt = $db->prepare($sql);
-    $stmt->bindValue(':clientReviewId', $clientReviewId, PDO::PARAM_INT);
+    $stmt->bindValue(':clientId', $clientId);
     $stmt->execute();
-    $clientReview = $stmt->fetch(PDO::FETCH_NAMED);
+    $reviewArray = $stmt->fetchAll(PDO::FETCH_ASSOC);
     $stmt->closeCursor();
-    return $clientReview;
+    return $reviewArray;
 }
-//function to update a review
-function updateReview($clientReviewId) {
+
+function getReview($reviewId) {
     $db = acmeConnect();
-    $sql = 'UPDATE reviews SET reviewId = :clientReviewId = WHERE reviewId = :clientReviewId';
+    $sql = "SELECT reviewText, reviewDate, invId, clientId FROM reviews  WHERE reviewId = :reviewId ";
     $stmt = $db->prepare($sql);
-    $stmt->bindValue(':clientReviewId', $clientReviewId, PDO::PARAM_STR);
+    $stmt->bindValue(':reviewId', $reviewId);
+    $stmt->execute();
+    $reviewArray = $stmt->fetch(PDO::FETCH_ASSOC);
+    $stmt->closeCursor();
+    return $reviewArray;
+}
+
+// Update a product
+function updateReview($reviewId, $reviewText) {
+    $db = acmeConnect();
+    $sql = 'UPDATE reviews SET reviewText = :reviewText, reviewDate = NOW() WHERE reviewId = :reviewId';
+    $stmt = $db->prepare($sql);
+    $stmt->bindValue(':reviewText', $reviewText, PDO::PARAM_STR);
+    $stmt->bindValue(':reviewId', $reviewId, PDO::PARAM_INT);
     $stmt->execute();
     $rowsChanged = $stmt->rowCount();
     $stmt->closeCursor();
     return $rowsChanged;
 }
-//function to delete a review
-function deleteReview($clientReviewId) {
+
+function getProductName($invId) {
     $db = acmeConnect();
-    $sql = 'DELETE FROM reviews WHERE reviewId = :clientReviewId';
+    $sql = 'SELECT invName FROM inventory WHERE invId = :invId';
     $stmt = $db->prepare($sql);
-    $stmt->bindValue(':clientReviewId', $clientReviewId, PDO::PARAM_INT);
+    $stmt->bindValue(':invId', $invId, PDO::PARAM_INT);
+    $stmt->execute();
+    $nameInfo = $stmt->fetch(PDO::FETCH_NAMED);
+    $stmt->closeCursor();
+    return $nameInfo;
+}
+
+function deleteReview($reviewId) {
+    $db = acmeConnect();
+    $sql = 'DELETE FROM reviews WHERE reviewId = :reviewId';
+    $stmt = $db->prepare($sql);
+    $stmt->bindValue(':reviewId', $reviewId, PDO::PARAM_INT);
     $stmt->execute();
     $rowsChanged = $stmt->rowCount();
     $stmt->closeCursor();

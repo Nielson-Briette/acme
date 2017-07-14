@@ -36,23 +36,56 @@
             ?>
 
             <h2>Customer Reviews</h2>
-            <?php
-            if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
-                echo " <p> Please leave a review in the space provided. </p> <br> 
-                    <form action='/acme/reviews/index.php?action=addNewReview' method='post'>
-                    <textarea name='message' rows='10' cols='60'></textarea><br>
-                                    <button type='submit'>Add Review</button>
-            </form>";
-            } else {
-                echo " <p>Reviews can be added upon <a href='/acme/accounts/index.php?action=login'>login</a></p> ";
-            }
-            ?>
+            <?php if (isset($_SESSION['loggedin'])) : ?>
+                <?php $firstname = $_SESSION['clientData']['clientFirstname'] ?>
+                <?php $lastname = $_SESSION['clientData']['clientLastname'] ?>
+                <form action="/acme/reviews/index.php" method='post'>
+                    <p> Screen name: <?php echo substr("$firstname", 0, 1); ?><?php echo $lastname; ?></p>
+                    <label for=“reviewText”>Write your review:</label><br>
+                    <textarea name="reviewText" id=“reviewText”  rows="10" cols="60" required><?php
+                        if (isset($reviewText)) {
+                            echo "$reviewText";
+                        }
+                        ?> </textarea><br>
+                    <input type="submit" name="submit" value="Add Review">
+                    <input type="hidden" name="action" value="addReview">
+                    <input type="hidden" name="clientId" value="<?php echo $_SESSION['clientData']['clientId']; ?>">
+                    <input type="hidden" name="invId" value="<?php echo $product['invId']; ?>">
+                </form>
+
+            <?php else : ?>
+                <p>Please <a href="/acme/accounts/index.php?action=login">login</a></p>
+            <?php endif; ?>
+
+            <!--display previous written reviews here-->    
+            <?php if (isset($_SESSION['loggedin'])) : ?>
+                <p> Your product reviews </p>
+            
+                <p><?php echo substr("$firstname", 0, 1); ?><?php echo $lastname; ?> Wrote 
+                 
+                    <?php
+                    $clientId = $_SESSION['clientData']['clientId'];
+                    $reviews = getReviewByClient($clientId);
+                    $reviewsList = "<ul>";
+                    foreach ($reviews as $review) {
+                        if ($review['invId'] == $prodId) {
+                            $reviewsList .= "<li>$review[reviewText] was written on $review[reviewDate]</li>";
+                        }
+                    }
+                    $reviewsList .= "</ul>";
+                    echo $reviewsList;
+                    ?>
+
+                <?php else : ?>
+                <p>Please <a href="/acme/accounts/index.php?action=login">login to see your reviews.</a></p>
+            <?php endif; ?>       
+
 
         </main>
         <footer>
-<?php
-include $_SERVER['DOCUMENT_ROOT'] . '/acme/common/footer.php';
-?>
+            <?php
+            include $_SERVER['DOCUMENT_ROOT'] . '/acme/common/footer.php';
+            ?>
         </footer>
     </body>
 </html>

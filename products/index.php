@@ -9,6 +9,7 @@ require_once '../model/products-model.php';
 require_once '../library/functions.php';
 require_once '../model/accounts-model.php';
 require_once '../model/uploads-model.php';
+require_once '../model/reviews-model.php';
 
 // Get the array of categories
 $categoriesAndIds = getCategoriesAndIds();

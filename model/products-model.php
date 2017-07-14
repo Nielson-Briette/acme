@@ -117,3 +117,14 @@ function getProductsByCategory($type){
  $stmt->closeCursor();
  return $products;
 }
+
+function getProductsInfo($type){
+ $db = acmeConnect();
+ $sql = 'SELECT * FROM inventory WHERE invId = :invId';
+ $stmt = $db->prepare($sql);
+ $stmt->bindValue(':invId', $type, PDO::PARAM_STR);
+ $stmt->execute();
+ $products = $stmt->fetch(PDO::FETCH_ASSOC);
+ $stmt->closeCursor();
+ return $products;
+}

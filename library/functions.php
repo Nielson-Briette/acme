@@ -60,7 +60,6 @@ function buildProductsDetail($product) {
     $pd .= "Vendor: $product[invVendor]";
     $pd .= '</li>';
     $pd .= '</ul>';
-
     return $pd;
 }
 

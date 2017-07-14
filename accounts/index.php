@@ -8,6 +8,7 @@ require_once '../model/acme-model.php';
 require_once '../model/accounts-model.php';
 require_once '../library/functions.php';
 require_once '../model/products-model.php';
+require_once '../model/reviews-model.php';
 
 // Get the array of categories
 $categories = getCategories();
@@ -121,32 +122,60 @@ switch ($action) {
         // Store the array into the session
         $_SESSION['clientData'] = $clientData;
         $_SESSION['firstname'] = $clientData['clientFirstname'];
-        
-        setcookie('firstname', "", time() -3600);        
+        $_SESSION['lastname'] = $clientData['clientLastname'];
+
+        setcookie('firstname', "", time() - 3600);
+        setcookie('lastname', "", time() - 3600);
+        $clientId = $_SESSION['clientData']['clientId'];
+        $clientFirstName = $_SESSION['clientData']['clientFirstname'];
+    
         // Send them to the admin view
         include '../view/admin.php';
         exit;
         break;
 
+    case 'loggedin':
+
+        if (isset($_SESSION['loggedin'])) {
+
+            $clientId = $_SESSION['clientData']['clientId'];
+            $clientFirstName = $_SESSION['clientData']['clientFirstname'];
+            $clientRevName = substr($clientFirstName, 0, 1) . $_SESSION['clientData']['clientLastname'];
+            $clientReviewsArray = getReviewByClient($clientId);
+            if (isset($clientReviewsArray)) {
+                $reviewList = buildClientRevsDisplay($clientReviewsArray, $clientRevName);
+            }
+
+
+            include '../view/admin.php';
+            exit;
+        } else {
+            header("Location: /acme/");
+            exit;
+        }
+
+        break;
+
+
     case 'Logout':
         session_destroy();
-        //todo: destroy cookie firstname
         header('location:/acme');
         exit;
-        
-         case 'admin':
-        if(!isset($_SESSION['clientData']) or($_SESSION['clientData']['clientId'] == NULL)) {
-    
-        include '../view/home.php';
-        break;}
-    //Send them to the admin view
-    include '../view/admin.php';
+
+    case 'admin':
+        if (!isset($_SESSION['clientData']) or ( $_SESSION['clientData']['clientId'] == NULL)) {
+
+            include '../view/home.php';
             break;
+        }
+        //Send them to the admin view
+        include '../view/admin.php';
+        break;
 
     case 'client-update':
         include '../view/client-update.php';
         break;
- 
+
 
     case 'updateAccount':
         $updateId = filter_input(INPUT_POST, 'updateId', FILTER_SANITIZE_NUMBER_INT);
@@ -170,7 +199,7 @@ switch ($action) {
         } else {
             $message = "<p>Error. $upfirstName was not updated.</p>";
             $_SESSION['message'] = $message;
-             include '../view/admin.php';
+            include '../view/admin.php';
             exit;
         }
         break;
@@ -181,10 +210,10 @@ switch ($action) {
         if (empty($updateId) || empty($clientPass)) {
             $message = '<p>Please complete all the information</p>';
         }
-        
+
         $updatePass = password_hash($updatePass, PASSWORD_DEFAULT);
         $updata = updatePassword($updateId, $updatePass);
-        
+
         if ($updata) {
             $message = "<p>Congratulations your password was sucessfully updated.</p>";
             $_SESSION['message'] = $message;
@@ -197,7 +226,7 @@ switch ($action) {
             exit;
         }
 
-        
+
 
         break;
 }
