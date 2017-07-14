@@ -4,7 +4,7 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link href="../css/style.css" type="text/css" rel="stylesheet" media="screen">
-        <title>Acme| Add Product</title>
+        <title>Acme| Update Review</title>
     </head>
     <body>
         <header>
@@ -40,29 +40,30 @@
                         <!-- Add the action key - value pair -->
                         <input type="hidden" name="action" value="updateReview">
                         <input type="hidden" name="invid" value="<?php
-                               if (isset($reviewInfo['invId'])) {
-                                   echo $reviewInfo['invId'];
-                               } elseif (isset($invId)) {
-                                   echo $invId;
-                               }
-                               ?>">
+                        if (isset($reviewInfo['invId'])) {
+                            echo $reviewInfo['invId'];
+                        } elseif (isset($invId)) {
+                            echo $invId;
+                        }
+                        ?>">
                         <input type="hidden" name="reviewid" value="<?php
-                               if (isset($reviewInfo['reviewId'])) {
-                                   echo $reviewInfo['reviewId'];
-                               } elseif (isset($reviewId)) {
-                                   echo $reviewId;
-                               }
-                               ?>">
-                        </form>                    
+                        if (isset($reviewInfo['reviewId'])) {
+                            echo $reviewInfo['reviewId'];
+                        } elseif (isset($reviewId)) {
+                            echo $reviewId;
+                        }
+                        ?>">
                     </fieldset>
+                </form>                    
+
             </section>         
 
         </main>
 
         <footer>
-<?php
-include $_SERVER['DOCUMENT_ROOT'] . '/acme/common/footer.php';
-?>
+            <?php
+            include $_SERVER['DOCUMENT_ROOT'] . '/acme/common/footer.php';
+            ?>
         </footer>
     </body>
 </html>

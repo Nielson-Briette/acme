@@ -4,7 +4,7 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link href="/acme/css/style.css" type="text/css" rel="stylesheet" media="screen">
-        <title>Acme| Home</title>
+        <title>Acme| Admin</title>
     </head>
     <body>
         <header>
@@ -57,25 +57,24 @@
                 <a href="/acme/products/index.php?action=product-management">Products</a><br>';
             }
             ?>
+            <div class="review-table">
+                <h1>Manage Your Product Reviews</h1>
+                <?php $reviews = getReviewbyClient($_SESSION['clientData']['clientId']) ?>
+                <?php foreach ($reviews as $review) { ?>
+                    <div>
+                        <p><?php
+                            echo $review['invName'];
+                            echo " (Reviewed on ";
+                            echo strftime("%d %B, %Y ", strtotime($review ['reviewDate']));
+                            echo " ) ";
+                            echo "<a href='/acme/reviews?action=editReview&id=$review[reviewId]' title='Click to Edit'>Edit</a> ";
+                            echo "<a href='/acme/reviews?action=deleteReview&id=$review[reviewId]' title='Click to Delete'>Delete</a>";
+                            ?></p>
 
-
-            <h1> Your Reviews </h1>
-          
-                    <?php
-                    $clientId = $_SESSION['clientData']['clientId'];
-                    $reviews = getReviewByClient($clientId);
-                    $reviewsList = "<ul>";
-                    foreach ($reviews as $review) {
-                       {
-                            $reviewsList .= "<li>$review[reviewText] was written on $review[reviewDate]</li>";
-                        }
-                    }
-                    $reviewsList .= "</ul>";
-                    echo $reviewsList;
-                    ?>
-
+                    </div>
+                <?php } ?>
+            </div>
         </main>
-
         <footer>
             <?php
             include $_SERVER['DOCUMENT_ROOT'] . '/acme/common/footer.php';
@@ -83,5 +82,3 @@
         </footer>
     </body>
 </html>
-
-

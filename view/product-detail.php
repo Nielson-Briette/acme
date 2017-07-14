@@ -59,27 +59,24 @@
 
             <!--display previous written reviews here-->    
             <?php if (isset($_SESSION['loggedin'])) : ?>
-            <div class="login">
-                <h2> Your product reviews </h2>
-            
-                <p><?php echo substr("$firstname", 0, 1); ?><?php echo $lastname; ?> Wrote 
-                 
+
+               
+            <div class="review-table" style="background: #ffff99">
+                     <h2> Your product reviews </h2>
                     <?php
                     $clientId = $_SESSION['clientData']['clientId'];
                     $reviews = getReviewByClient($clientId);
-                    $reviewsList = "<ul>";
+                    ?>
+                    <?php
                     foreach ($reviews as $review) {
                         if ($review['invId'] == $prodId) {
-                            $reviewsList .= "<li>$review[reviewText] was written on $review[reviewDate] </li>";
-                        }
-                    }
-                    $reviewsList .= "</ul>";
-                    echo $reviewsList;
-                    ?>
-                    
-                <?php else : ?>
-                <p>Please <a href="/acme/accounts/index.php?action=login">login to see your reviews.</a></p>
-            <?php endif; ?>       
+                            ?>
+                            <p>   <p><?php echo substr("$firstname", 0, 1); ?><?php echo $lastname; ?> wrote on <?php echo strftime("%d %B, %Y ", strtotime($review ['reviewDate'])); ?></p>
+                            <?php echo $review['reviewText']; ?>
+                        <?php } ?>
+                    <?php } else : ?>
+                    <p>Please <a href="/acme/accounts/index.php?action=login">login to see your reviews.</a></p>
+                <?php endif; ?>       
             </div>
 
         </main>

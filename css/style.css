@@ -181,7 +181,6 @@ and open the template in the editor.
     }
 
     .reviews {
-        -webkit-flex: 1 0 0;
         flex: 1 0 0;
         flex-wrap:  wrap;
         display: flex;
@@ -222,10 +221,25 @@ and open the template in the editor.
         display: flex;
         align-items: center;
         flex-direction: column;
-        width: 20%;
+        width: 50%;
         font-size: 1em;
         justify-content: center;
         align-items: center;
+        list-style: none;
+    }
+    
+        .review-table { 
+        border: solid 3px #eee;
+        background-color: #F5F5F5;
+        padding: 30px;
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        width: 100%;
+        font-size: 1em;
+        justify-content: center;
+        align-items: center;
+        list-style: none;
     }
     
     .field-button {

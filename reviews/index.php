@@ -47,24 +47,6 @@ switch ($action) {
             exit;
         }
         break;
-        
-           case'review-management':
-        $reviews = getReviews();
-        if (count($reviews) > 0) {
-            $reviewList = '<table>';
-            $reviewList .= '<thead>';
-            $reviewList .= '<tr><th>Product Name</th><td>&nbsp;</td><td>&nbsp;</td></tr>';
-            $reviewList .= '</thead>';
-            $reviewList .= '<tbody>';
-            foreach ($reviews as $review) {
-                $reviewList .= "<tr><td>$review[invName]</td>";
-                $reviewList .= "<td><a href='/acme/products?action=mod&id=$review[invId]' title='Click to modify'>Modify</a></td>";
-                $reviewList .= "<td><a href='/acme/products?action=del&id=$review[invId]' title='Click to delete'>Delete</a></td></tr>";
-            }
-            $reviewList .= '</tbody></table>';
-        } else {
-            $message = '<p class="notify">Sorry, no reviews were returned.</p>';
-        }
 
     case 'editReview':
 
@@ -99,7 +81,7 @@ switch ($action) {
         if ($updateResult) {
             $message = "<p class='notice'>Congratulations, the review was successfully updated.</p>";
             $_SESSION['message'] = $message;     
-            header('location: /acme/accounts/?action=loggedin');
+            include '../view/admin.php';
             exit;
         } else {
             $message = "<p class='notice'>Error. The review was not updated.</p>";
@@ -123,7 +105,7 @@ switch ($action) {
         break;
 
     case 'delete':
-        $reviewId = filter_input(INPUT_POST, 'reviewid', FILTER_SANITIZE_NUMBER_INT);
+        $reviewId = filter_input(INPUT_POST, 'reviewId', FILTER_SANITIZE_NUMBER_INT);
         $reviewInfo = getReview($reviewId);
         $invId = $reviewInfo['invId'];
         $invReviewNameInfo = getProductName($invId);
@@ -136,17 +118,15 @@ switch ($action) {
         if ($deleteResult) {
             $message = "<p class='notice'>Congratulations! The " . $invReviewName . " review was successfully deleted.</p>";
             $_SESSION['message'] = $message;
-            header('location: /acme/accounts/?action=loggedin');
+                include '../view/admin.php';
             exit;
         } else {
             $message = "<p class='notice'>Error. The " . $invReviewName . " review was not deleted.</p>";
-            header('location: /acme/accounts/?action=loggedin');
+                 include '../view/review-delete.php';
             exit;
         }
         break;
-    case 'confirm-del':
 
-        break;
     case 'default':
 
         if (isset($_SESSION['loggedin'])) {

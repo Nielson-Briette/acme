@@ -123,9 +123,8 @@ switch ($action) {
         $_SESSION['clientData'] = $clientData;
         $_SESSION['firstname'] = $clientData['clientFirstname'];
         $_SESSION['lastname'] = $clientData['clientLastname'];
-
-        setcookie('firstname', "", time() - 3600);
-        setcookie('lastname', "", time() - 3600);
+        setcookie('firstname', "", strtotime('-1 year'), '/');
+        setcookie('lastname', "", strtotime('-1 year'), '/');
         $clientId = $_SESSION['clientData']['clientId'];
         $clientFirstName = $_SESSION['clientData']['clientFirstname'];
     

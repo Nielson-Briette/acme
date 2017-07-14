@@ -4,7 +4,7 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link href="../css/style.css" type="text/css" rel="stylesheet" media="screen">
-        <title>Acme| Add Product</title>
+        <title>Acme| Delete Review</title>
     </head>
     <body>
         <header>
@@ -17,7 +17,7 @@
         </nav>
         <main>
             <section>
-                <h1 class="login-title"><?php if(isset($invReviewNameInfo['invName'])){ echo "Delete ". $invReviewNameInfo['invName'] . "Review";} ?></h1>
+                <h1 class="login"><?php if(isset($invReviewNameInfo['invName'])){ echo "Delete ". $invReviewNameInfo['invName'] . "Review";} ?></h1>
                 <p>Confirm Review Deletion. The delete is permanent.</p>
 
                 <?php
@@ -29,7 +29,7 @@
                 <form method="post" action="/acme/reviews/index.php">
                     <fieldset>
                         <label for="reviewtext">Review Text</label><br>
-                        <textarea name="reviewtext" id="reviewtext" form="reviewform" rows="10" cols="75" required readonly>
+                        <textarea name="reviewtext" id="reviewtext" rows="10" cols="75" required readonly>
                             <?php
                             if (isset($reviewText)) {
                                 echo $reviewText;
@@ -40,7 +40,7 @@
 
                         <button type="submit" name="delete" id="delete" >Delete Review</button>
                         <input type="hidden" name="action" value="delete">
-                        <input type="hidden" name="reviewid" value="<?php
+                        <input type="hidden" name="reviewId" value="<?php
                             if (isset($reviewInfo['reviewId'])) {
                                 echo $reviewInfo['reviewId'];
                             } elseif (isset($reviewId)) {

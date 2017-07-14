@@ -1,6 +1,5 @@
-<!--ACCOUNTS MODEL - SITE VISITORS-->
 <?php
-
+//<!--ACCOUNTS MODEL - SITE VISITORS-->
 //<!--new function to handle site's registrations-->
 function regVisitor($firstname, $lastname, $email, $password){
 // Create a connection object using the acme connection function
